@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Ritme adalah habit tracker lokal untuk mencatat kebiasaan, melihat streak, dan merawat konsistensi harian.">
+    <meta name="description" content="Ritme is a local habit tracker to log habits, see streaks, and nurture daily consistency.">
     <meta name="theme-color" content="#f5f3ec">
     <title>Ritme — Habit Tracker</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231f6b52'/%3E%3Cpath d='M48 16C31 17 19 25 19 39c0 5 4 9 9 9 13 0 20-14 20-32Z' fill='none' stroke='%23f5f3ec' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M14 50c4-10 11-16 22-21' fill='none' stroke='%23f5f3ec' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <a class="skip-link" href="#main">Lewati ke konten utama</a>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
       <symbol id="icon-leaf" viewBox="0 0 24 24">
@@ -110,7 +110,7 @@
 
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="brand" href="#dashboard" data-nav="dashboard" aria-label="Ritme, kembali ke dashboard">
+        <a class="brand" href="#dashboard" data-nav="dashboard" aria-label="Ritme, back to dashboard">
           <span class="brand-mark" aria-hidden="true">
             <svg><use href="#icon-leaf"></use></svg>
           </span>
@@ -120,33 +120,33 @@
           </span>
         </a>
 
-        <nav class="primary-nav" aria-label="Navigasi utama">
+        <nav class="primary-nav" aria-label="Main navigation">
           <a class="nav-link" href="#dashboard" data-nav="dashboard">
             <svg aria-hidden="true"><use href="#icon-home"></use></svg>
             <span>Dashboard</span>
           </a>
           <a class="nav-link" href="#habits" data-nav="habits">
             <svg aria-hidden="true"><use href="#icon-list"></use></svg>
-            <span>Kebiasaan</span>
+            <span>Habits</span>
           </a>
           <a class="nav-link" href="#calendar" data-nav="calendar">
             <svg aria-hidden="true"><use href="#icon-calendar"></use></svg>
-            <span>Kalender</span>
+            <span>Calendar</span>
           </a>
           <a class="nav-link" href="#stats" data-nav="stats">
             <svg aria-hidden="true"><use href="#icon-chart"></use></svg>
-            <span>Statistik</span>
+            <span>Statistics</span>
           </a>
         </nav>
 
         <div class="header-actions">
           <span class="save-state" id="save-state" role="status" aria-live="polite">
             <span class="save-dot" aria-hidden="true"></span>
-            <span id="save-state-text">Siap</span>
+            <span id="save-state-text">Ready</span>
           </span>
-          <button class="button button-primary header-add" id="new-habit-button" type="button" aria-label="Kebiasaan baru">
+          <button class="button button-primary header-add" id="new-habit-button" type="button" aria-label="New habit">
             <svg aria-hidden="true"><use href="#icon-plus"></use></svg>
-            <span>Kebiasaan baru</span>
+            <span>New habit</span>
           </button>
         </div>
       </div>
@@ -158,16 +158,16 @@
           <svg><use href="#icon-alert"></use></svg>
         </span>
         <div class="storage-banner-copy">
-          <strong>Penyimpanan lokal perlu perhatian</strong>
+          <strong>Local storage needs attention</strong>
           <p id="storage-banner-message"></p>
         </div>
         <div class="storage-banner-actions">
           <button class="button button-quiet button-small" id="storage-download-button" type="button" hidden>
             <svg aria-hidden="true"><use href="#icon-download"></use></svg>
-            <span>Unduh data</span>
+            <span>Download data</span>
           </button>
           <button class="button button-danger-outline button-small" id="storage-reset-button" type="button" hidden>
-            Reset setelah konfirmasi
+            Reset after confirmation
           </button>
         </div>
       </div>
@@ -175,8 +175,8 @@
       <section class="view view-dashboard" id="view-dashboard" data-view="dashboard" aria-labelledby="dashboard-title">
         <header class="dashboard-head">
           <div class="dashboard-copy">
-            <p class="eyebrow" id="greeting">Selamat pagi</p>
-            <h1 id="dashboard-title">Rawat ritme kecil,<br><em>lihat yang tumbuh.</em></h1>
+            <p class="eyebrow" id="greeting">Good morning</p>
+            <h1 id="dashboard-title">Nurture small rhythms,<br><em>watch them grow.</em></h1>
             <p class="page-date">
               <svg aria-hidden="true"><use href="#icon-sun"></use></svg>
               <span id="today-label"></span>
@@ -184,29 +184,29 @@
           </div>
 
           <div class="daily-ring-card">
-            <div class="ring" id="today-ring" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Penyelesaian kebiasaan hari ini">
+            <div class="ring" id="today-ring" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Today's habit completion">
               <div class="ring-inner">
                 <strong id="today-percent">0%</strong>
-                <span>selesai</span>
+                <span>done</span>
               </div>
             </div>
             <div class="ring-copy">
-              <p class="eyebrow">Hari ini</p>
-              <h2 id="today-ring-caption">Mulai dari satu langkah</h2>
-              <p id="today-ring-detail">Belum ada kebiasaan yang dijadwalkan.</p>
+              <p class="eyebrow">Today</p>
+              <h2 id="today-ring-caption">Start with one step</h2>
+              <p id="today-ring-detail">No habits scheduled yet.</p>
             </div>
           </div>
         </header>
 
-        <section class="metric-grid" aria-label="Ringkasan hari ini">
+        <section class="metric-grid" aria-label="Today's summary">
           <article class="metric-card">
             <span class="metric-icon metric-icon-green" aria-hidden="true">
               <svg><use href="#icon-list"></use></svg>
             </span>
             <div>
-              <p class="metric-label">Kebiasaan aktif</p>
+              <p class="metric-label">Active habits</p>
               <strong class="metric-value" id="stat-active">0</strong>
-              <p class="metric-note" id="stat-active-note">Belum ada kebiasaan</p>
+              <p class="metric-note" id="stat-active-note">No habits yet</p>
             </div>
           </article>
           <article class="metric-card">
@@ -214,9 +214,9 @@
               <svg><use href="#icon-check"></use></svg>
             </span>
             <div>
-              <p class="metric-label">Selesai hari ini</p>
+              <p class="metric-label">Completed today</p>
               <strong class="metric-value" id="stat-done">0</strong>
-              <p class="metric-note" id="stat-done-note">Dari 0 yang dijadwalkan</p>
+              <p class="metric-note" id="stat-done-note">of 0 scheduled</p>
             </div>
           </article>
           <article class="metric-card">
@@ -224,9 +224,9 @@
               <svg><use href="#icon-flame"></use></svg>
             </span>
             <div>
-              <p class="metric-label">Streak terbaik</p>
-              <strong class="metric-value"><span id="stat-streak">0</span><small> hari</small></strong>
-              <p class="metric-note" id="stat-streak-note">Belum ada streak</p>
+              <p class="metric-label">Best streak</p>
+              <strong class="metric-value"><span id="stat-streak">0</span><small> days</small></strong>
+              <p class="metric-note" id="stat-streak-note">No streak yet</p>
             </div>
           </article>
           <article class="metric-card">
@@ -234,9 +234,9 @@
               <svg><use href="#icon-chart"></use></svg>
             </span>
             <div>
-              <p class="metric-label">Konsistensi 7 hari</p>
+              <p class="metric-label">7-day consistency</p>
               <strong class="metric-value"><span id="stat-week">0%</span></strong>
-              <p class="metric-note" id="stat-week-note">Belum ada kewajiban</p>
+              <p class="metric-note" id="stat-week-note">No scheduled habits</p>
             </div>
           </article>
         </section>
@@ -245,21 +245,21 @@
           <section class="panel today-panel" aria-labelledby="today-list-title">
             <header class="panel-head">
               <div>
-                <p class="eyebrow">Fokus hari ini</p>
-                <h2 id="today-list-title">Kebiasaan terjadwal</h2>
+                <p class="eyebrow">Today's focus</p>
+                <h2 id="today-list-title">Scheduled habits</h2>
               </div>
-              <span class="panel-count" id="today-scheduled-label">0 kebiasaan</span>
+              <span class="panel-count" id="today-scheduled-label">0 habits</span>
             </header>
             <div class="habit-stack" id="today-list" role="list"></div>
             <div class="empty-inline" id="today-empty" hidden>
               <span class="empty-mark" aria-hidden="true">
                 <svg><use href="#icon-leaf"></use></svg>
               </span>
-              <h3 id="today-empty-title">Hari ini lapang</h3>
-              <p id="today-empty-copy">Tidak ada kebiasaan yang dijadwalkan. Kamu tetap bisa menambah kebiasaan baru.</p>
+              <h3 id="today-empty-title">Today is free</h3>
+              <p id="today-empty-copy">No habits scheduled. You can still add a new habit.</p>
               <button class="button button-secondary button-small" type="button" data-action="new-habit">
                 <svg aria-hidden="true"><use href="#icon-plus"></use></svg>
-                <span>Tambah kebiasaan</span>
+                <span>Add habit</span>
               </button>
             </div>
           </section>
@@ -267,14 +267,14 @@
           <aside class="panel week-panel" aria-labelledby="week-title">
             <header class="panel-head">
               <div>
-                <p class="eyebrow">Ritme mingguan</p>
-                <h2 id="week-title">Tujuh hari terakhir</h2>
+                <p class="eyebrow">Weekly rhythm</p>
+                <h2 id="week-title">Last seven days</h2>
               </div>
             </header>
-            <div class="week-chart" id="week-chart" role="img" aria-label="Grafik penyelesaian tujuh hari terakhir"></div>
-            <p class="chart-summary" id="week-summary">Belum ada aktivitas.</p>
+            <div class="week-chart" id="week-chart" role="img" aria-label="Last seven days completion chart"></div>
+            <p class="chart-summary" id="week-summary">No activity yet.</p>
             <button class="text-link" type="button" data-action="go-stats">
-              <span>Lihat statistik lengkap</span>
+              <span>View full statistics</span>
               <svg aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
             </button>
           </aside>
@@ -284,49 +284,49 @@
       <section class="view" id="view-habits" data-view="habits" aria-labelledby="habits-title" hidden>
         <header class="page-head">
           <div>
-            <p class="eyebrow">Koleksi ritme</p>
-            <h1 id="habits-title">Kebiasaanmu, <em>dengan caramu.</em></h1>
-            <p class="page-lede">Atur jadwal yang realistis, lalu rawat satu hari dalam satu waktu.</p>
+            <p class="eyebrow">Habit collection</p>
+            <h1 id="habits-title">Your habits, <em>your way.</em></h1>
+            <p class="page-lede">Set a realistic schedule, then nurture one day at a time.</p>
           </div>
           <button class="button button-primary" type="button" data-action="new-habit">
             <svg aria-hidden="true"><use href="#icon-plus"></use></svg>
-            <span>Kebiasaan baru</span>
+            <span>New habit</span>
           </button>
         </header>
 
-        <div class="filter-panel" aria-label="Filter kebiasaan">
+        <div class="filter-panel" aria-label="Filter habits">
           <label class="search-field">
-            <span class="visually-hidden">Cari kebiasaan berdasarkan nama</span>
+            <span class="visually-hidden">Search habits by name</span>
             <svg aria-hidden="true"><use href="#icon-search"></use></svg>
-            <input id="habits-search" type="search" placeholder="Cari nama kebiasaan" autocomplete="off">
-            <button class="search-clear" id="clear-habit-search" type="button" aria-label="Hapus pencarian" hidden>
+            <input id="habits-search" type="search" placeholder="Search habit name" autocomplete="off">
+            <button class="search-clear" id="clear-habit-search" type="button" aria-label="Clear search" hidden>
               <svg aria-hidden="true"><use href="#icon-x"></use></svg>
             </button>
           </label>
 
           <label class="select-field">
-            <span>Kategori</span>
+            <span>Category</span>
             <select id="habits-category">
-              <option value="all">Semua kategori</option>
-              <option value="health">Kesehatan</option>
-              <option value="productivity">Produktivitas</option>
-              <option value="learning">Belajar</option>
+              <option value="all">All categories</option>
+              <option value="health">Health</option>
+              <option value="productivity">Productivity</option>
+              <option value="learning">Learning</option>
               <option value="personal">Personal</option>
             </select>
           </label>
 
-          <div class="status-filter" role="group" aria-label="Status kebiasaan">
-            <button type="button" data-status-filter="active" aria-pressed="true">Aktif</button>
-            <button type="button" data-status-filter="archived" aria-pressed="false">Arsip</button>
-            <button type="button" data-status-filter="all" aria-pressed="false">Semua</button>
+          <div class="status-filter" role="group" aria-label="Habit status">
+            <button type="button" data-status-filter="active" aria-pressed="true">Active</button>
+            <button type="button" data-status-filter="archived" aria-pressed="false">Archived</button>
+            <button type="button" data-status-filter="all" aria-pressed="false">All</button>
           </div>
 
-          <button class="text-button" id="clear-habit-filters" type="button" hidden>Hapus filter</button>
+          <button class="text-button" id="clear-habit-filters" type="button" hidden>Clear filters</button>
         </div>
 
         <div class="list-head">
-          <p class="result-summary" id="habits-summary">Memuat kebiasaan...</p>
-          <p class="list-hint">Klik lingkaran untuk menandai selesai hari ini.</p>
+          <p class="result-summary" id="habits-summary">Loading habits...</p>
+          <p class="list-hint">Click the circle to mark complete for today.</p>
         </div>
 
         <div class="habit-grid" id="habits-list" role="list"></div>
@@ -335,15 +335,15 @@
           <span class="empty-mark" aria-hidden="true">
             <svg><use href="#icon-leaf"></use></svg>
           </span>
-          <p class="eyebrow">Ruang untuk tumbuh</p>
-          <h2 id="habits-empty-title">Belum ada kebiasaan</h2>
-          <p id="habits-empty-copy">Mulai dengan satu kebiasaan kecil yang ingin kamu rawat.</p>
+          <p class="eyebrow">Room to grow</p>
+          <h2 id="habits-empty-title">No habits yet</h2>
+          <p id="habits-empty-copy">Start with one small habit you want to nurture.</p>
           <div class="empty-actions">
             <button class="button button-primary" type="button" data-action="new-habit" id="habits-empty-create">
               <svg aria-hidden="true"><use href="#icon-plus"></use></svg>
-              <span>Buat kebiasaan pertama</span>
+              <span>Create first habit</span>
             </button>
-            <button class="button button-quiet" type="button" id="habits-empty-clear" hidden>Hapus filter</button>
+            <button class="button button-quiet" type="button" id="habits-empty-clear" hidden>Clear filters</button>
           </div>
         </div>
       </section>
@@ -351,9 +351,9 @@
       <section class="view" id="view-calendar" data-view="calendar" aria-labelledby="calendar-title" hidden>
         <header class="page-head">
           <div>
-            <p class="eyebrow">Jejak harian</p>
-            <h1 id="calendar-title">Lihat <em>irama bulanmu.</em></h1>
-            <p class="page-lede">Setiap tanggal menyimpan cerita kecil. Pilih satu untuk melihat atau mencatat check-in.</p>
+            <p class="eyebrow">Daily trail</p>
+            <h1 id="calendar-title">See <em>your monthly rhythm.</em></h1>
+            <p class="page-lede">Every date holds a small story. Pick one to view or log a check-in.</p>
           </div>
         </header>
 
@@ -361,46 +361,46 @@
           <section class="panel calendar-panel" aria-labelledby="calendar-month-label">
             <header class="calendar-head">
               <div>
-                <p class="eyebrow">Kalender aktivitas</p>
-                <h2 id="calendar-month-label">Oktober 2026</h2>
+                <p class="eyebrow">Activity calendar</p>
+                <h2 id="calendar-month-label">October 2026</h2>
               </div>
               <div class="calendar-controls">
-                <button class="text-button" id="calendar-today" type="button">Hari ini</button>
-                <button class="icon-button" id="calendar-prev" type="button" aria-label="Bulan sebelumnya">
+                <button class="text-button" id="calendar-today" type="button">Today</button>
+                <button class="icon-button" id="calendar-prev" type="button" aria-label="Previous month">
                   <svg aria-hidden="true"><use href="#icon-chevron-left"></use></svg>
                 </button>
-                <button class="icon-button" id="calendar-next" type="button" aria-label="Bulan berikutnya">
+                <button class="icon-button" id="calendar-next" type="button" aria-label="Next month">
                   <svg aria-hidden="true"><use href="#icon-chevron-right"></use></svg>
                 </button>
               </div>
             </header>
 
             <div class="weekday-row" aria-hidden="true">
-              <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span>
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
             </div>
             <div class="calendar-grid" id="calendar-grid" role="group" aria-labelledby="calendar-month-label"></div>
 
-            <div class="calendar-legend" aria-label="Keterangan kalender">
-              <span><i class="legend-dot legend-today"></i>Hari ini</span>
-              <span><i class="legend-dot legend-progress"></i>Ada progres</span>
-              <span><i class="legend-dot legend-archived"></i>Riwayat arsip</span>
-              <span><i class="legend-dot legend-neutral"></i>Tidak ada jadwal</span>
+            <div class="calendar-legend" aria-label="Calendar legend">
+              <span><i class="legend-dot legend-today"></i>Today</span>
+              <span><i class="legend-dot legend-progress"></i>Has progress</span>
+              <span><i class="legend-dot legend-archived"></i>Archived history</span>
+              <span><i class="legend-dot legend-neutral"></i>No schedule</span>
             </div>
           </section>
 
           <aside class="panel day-panel" aria-labelledby="selected-date-label">
             <header class="day-panel-head">
-              <p class="eyebrow">Tanggal terpilih</p>
-              <h2 id="selected-date-label">Hari ini</h2>
-              <p id="selected-date-summary">Belum ada kebiasaan terjadwal.</p>
+              <p class="eyebrow">Selected date</p>
+              <h2 id="selected-date-label">Today</h2>
+              <p id="selected-date-summary">No habits scheduled.</p>
             </header>
             <div class="day-list" id="day-habits"></div>
             <div class="empty-inline compact" id="day-empty" hidden>
               <span class="empty-mark small" aria-hidden="true">
                 <svg><use href="#icon-calendar"></use></svg>
               </span>
-              <h3>Tidak ada jadwal</h3>
-              <p id="day-empty-copy">Hari ini bebas dari kewajiban. Tidak ada yang perlu diperbaiki.</p>
+              <h3>No schedule</h3>
+              <p id="day-empty-copy">Today is free of obligations. Nothing to fix.</p>
             </div>
           </aside>
         </div>
@@ -409,21 +409,21 @@
       <section class="view" id="view-stats" data-view="stats" aria-labelledby="stats-title" hidden>
         <header class="page-head">
           <div>
-            <p class="eyebrow">Pola yang terlihat</p>
-            <h1 id="stats-title">Bukan sempurna, <em>tapi konsisten.</em></h1>
-            <p class="page-lede">Angka membantu melihat ritme, bukan menghakimi hari yang terlewat.</p>
+            <p class="eyebrow">Visible patterns</p>
+            <h1 id="stats-title">Not perfect, <em>but consistent.</em></h1>
+            <p class="page-lede">Numbers help see the rhythm, not judge the days missed.</p>
           </div>
         </header>
 
-        <section class="metric-grid" aria-label="Ringkasan statistik">
+        <section class="metric-grid" aria-label="Statistics summary">
           <article class="metric-card">
             <span class="metric-icon metric-icon-green" aria-hidden="true">
               <svg><use href="#icon-check"></use></svg>
             </span>
             <div>
-              <p class="metric-label">Total check-in</p>
+              <p class="metric-label">Total check-ins</p>
               <strong class="metric-value" id="stats-total-checkins">0</strong>
-              <p class="metric-note">Termasuk riwayat arsip</p>
+              <p class="metric-note">Including archived history</p>
             </div>
           </article>
           <article class="metric-card">
@@ -431,9 +431,9 @@
               <svg><use href="#icon-target"></use></svg>
             </span>
             <div>
-              <p class="metric-label">Konsistensi 7 hari</p>
+              <p class="metric-label">7-day consistency</p>
               <strong class="metric-value" id="stats-week">0%</strong>
-              <p class="metric-note" id="stats-week-note">Belum ada kewajiban</p>
+              <p class="metric-note" id="stats-week-note">No scheduled habits</p>
             </div>
           </article>
           <article class="metric-card">
@@ -441,9 +441,9 @@
               <svg><use href="#icon-chart"></use></svg>
             </span>
             <div>
-              <p class="metric-label">Konsistensi 30 hari</p>
+              <p class="metric-label">30-day consistency</p>
               <strong class="metric-value" id="stats-month">0%</strong>
-              <p class="metric-note" id="stats-month-note">Belum ada kewajiban</p>
+              <p class="metric-note" id="stats-month-note">No scheduled habits</p>
             </div>
           </article>
           <article class="metric-card">
@@ -451,9 +451,9 @@
               <svg><use href="#icon-flame"></use></svg>
             </span>
             <div>
-              <p class="metric-label">Streak terpanjang</p>
-              <strong class="metric-value"><span id="stats-best-streak">0</span><small> hari</small></strong>
-              <p class="metric-note" id="stats-best-streak-note">Belum ada streak</p>
+              <p class="metric-label">Longest streak</p>
+              <strong class="metric-value"><span id="stats-best-streak">0</span><small> days</small></strong>
+              <p class="metric-note" id="stats-best-streak-note">No streak yet</p>
             </div>
           </article>
         </section>
@@ -462,31 +462,31 @@
           <section class="panel chart-panel" aria-labelledby="stats-week-title">
             <header class="panel-head">
               <div>
-                <p class="eyebrow">Tujuh hari terakhir</p>
-                <h2 id="stats-week-title">Aktivitas harian</h2>
+                <p class="eyebrow">Last seven days</p>
+                <h2 id="stats-week-title">Daily activity</h2>
               </div>
-              <span class="panel-count" id="stats-week-caption">0 dari 0</span>
+              <span class="panel-count" id="stats-week-caption">0 of 0</span>
             </header>
-            <div class="stats-chart" id="stats-week-chart" role="img" aria-label="Grafik aktivitas tujuh hari terakhir"></div>
-            <p class="chart-summary" id="stats-week-summary">Belum ada kewajiban pada periode ini.</p>
+            <div class="stats-chart" id="stats-week-chart" role="img" aria-label="Last seven days activity chart"></div>
+            <p class="chart-summary" id="stats-week-summary">No scheduled habits in this period.</p>
           </section>
 
           <section class="panel best-panel" aria-labelledby="stats-best-name">
-            <p class="eyebrow">Jejak terpanjang</p>
+            <p class="eyebrow">Longest streak</p>
             <div class="best-streak-number">
               <svg aria-hidden="true"><use href="#icon-flame"></use></svg>
               <strong id="stats-best-number">0</strong>
-              <span>hari</span>
+              <span>days</span>
             </div>
-            <h2 id="stats-best-name">Belum ada streak</h2>
-            <p id="stats-best-detail">Streak dihitung dari hari yang benar-benar dijadwalkan.</p>
+            <h2 id="stats-best-name">No streak yet</h2>
+            <p id="stats-best-detail">Streaks are counted from days that were actually scheduled.</p>
           </section>
 
           <section class="panel progress-panel" aria-labelledby="stats-progress-title">
             <header class="panel-head">
               <div>
-                <p class="eyebrow">Per kebiasaan</p>
-                <h2 id="stats-progress-title">Progres 30 hari</h2>
+                <p class="eyebrow">Per habit</p>
+                <h2 id="stats-progress-title">30-day progress</h2>
               </div>
             </header>
             <div class="progress-list" id="stats-progress-list"></div>
@@ -494,8 +494,8 @@
               <span class="empty-mark small" aria-hidden="true">
                 <svg><use href="#icon-chart"></use></svg>
               </span>
-              <h3>Belum ada data untuk dihitung</h3>
-              <p>Tambahkan kebiasaan dan lakukan check-in untuk melihat polanya.</p>
+              <h3>No data to calculate yet</h3>
+              <p>Add habits and check in to see patterns.</p>
             </div>
           </section>
         </div>
@@ -508,9 +508,9 @@
           <span class="brand-mark small" aria-hidden="true">
             <svg><use href="#icon-leaf"></use></svg>
           </span>
-          <p><strong>Ritme</strong> merawat kebiasaan kecil, satu hari dalam satu waktu.</p>
+          <p><strong>Ritme</strong> nurtures small habits, one day at a time.</p>
         </div>
-        <p class="footer-meta">Data tersimpan lokal di browser. Proyek 07 · <a href="README.md">Dokumentasi</a></p>
+        <p class="footer-meta">Data stored locally in the browser. Project 07 · <a href="README.md">Documentation</a></p>
       </div>
     </footer>
 
@@ -518,11 +518,11 @@
       <form class="dialog-form" id="habit-form" novalidate>
         <header class="dialog-head">
           <div>
-            <p class="eyebrow" id="habit-dialog-eyebrow">Kebiasaan baru</p>
-            <h2 id="habit-dialog-title">Mulai satu ritme</h2>
-            <p id="habit-dialog-subtitle">Pilih satu langkah kecil yang bisa kamu rawat.</p>
+            <p class="eyebrow" id="habit-dialog-eyebrow">New habit</p>
+            <h2 id="habit-dialog-title">Start one rhythm</h2>
+            <p id="habit-dialog-subtitle">Pick one small step you can nurture.</p>
           </div>
-          <button class="icon-button" type="button" data-dialog-close aria-label="Tutup dialog">
+          <button class="icon-button" type="button" data-dialog-close aria-label="Close dialog">
             <svg aria-hidden="true"><use href="#icon-x"></use></svg>
           </button>
         </header>
@@ -531,22 +531,22 @@
           <input type="hidden" id="habit-id">
 
           <div class="field">
-            <label for="habit-name">Nama kebiasaan</label>
+            <label for="habit-name">Habit name</label>
             <input id="habit-name" name="name" type="text" maxlength="60" autocomplete="off" required aria-describedby="habit-name-hint habit-name-error">
             <div class="field-foot">
-              <span id="habit-name-hint">Contoh: Jalan pagi, membaca 10 menit.</span>
+              <span id="habit-name-hint">Example: Morning walk, reading for 10 minutes.</span>
             </div>
             <p class="field-error" id="habit-name-error" role="alert" hidden></p>
           </div>
 
           <div class="form-grid">
             <div class="field">
-              <label for="habit-category">Kategori</label>
+              <label for="habit-category">Category</label>
               <div class="select-wrap">
                 <select id="habit-category" name="category" aria-describedby="habit-category-error">
-                  <option value="health">Kesehatan</option>
-                  <option value="productivity">Produktivitas</option>
-                  <option value="learning">Belajar</option>
+                  <option value="health">Health</option>
+                  <option value="productivity">Productivity</option>
+                  <option value="learning">Learning</option>
                   <option value="personal">Personal</option>
                 </select>
               </div>
@@ -554,12 +554,12 @@
             </div>
 
             <fieldset class="field color-field">
-              <legend>Warna aksen</legend>
+              <legend>Accent color</legend>
               <div class="color-options" id="habit-colors">
                 <label class="color-option" style="--swatch: #1f6b52">
                   <input type="radio" name="color" value="pine" checked>
                   <span class="color-swatch" aria-hidden="true"></span>
-                  <span>Pinus</span>
+                  <span>Pine</span>
                 </label>
                 <label class="color-option" style="--swatch: #247c76">
                   <input type="radio" name="color" value="teal">
@@ -569,7 +569,7 @@
                 <label class="color-option" style="--swatch: #3c78a8">
                   <input type="radio" name="color" value="sky">
                   <span class="color-swatch" aria-hidden="true"></span>
-                  <span>Langit</span>
+                  <span>Sky</span>
                 </label>
                 <label class="color-option" style="--swatch: #a8742c">
                   <input type="radio" name="color" value="amber">
@@ -579,12 +579,12 @@
                 <label class="color-option" style="--swatch: #a85a64">
                   <input type="radio" name="color" value="rose">
                   <span class="color-swatch" aria-hidden="true"></span>
-                  <span>Mawar</span>
+                  <span>Rose</span>
                 </label>
                 <label class="color-option" style="--swatch: #785a8e">
                   <input type="radio" name="color" value="plum">
                   <span class="color-swatch" aria-hidden="true"></span>
-                  <span>Prem</span>
+                  <span>Plum</span>
                 </label>
               </div>
               <p class="field-error" id="habit-color-error" role="alert" hidden></p>
@@ -592,20 +592,20 @@
           </div>
 
           <fieldset class="field frequency-field">
-            <legend>Frekuensi</legend>
+            <legend>Frequency</legend>
             <div class="frequency-options">
               <label class="frequency-option">
                 <input type="radio" name="frequency" value="daily" checked>
                 <span class="frequency-copy">
-                  <strong>Setiap hari</strong>
-                  <small>Ritme yang hadir setiap hari.</small>
+                  <strong>Every day</strong>
+                  <small>A rhythm present every day.</small>
                 </span>
               </label>
               <label class="frequency-option">
                 <input type="radio" name="frequency" value="weekly">
                 <span class="frequency-copy">
-                  <strong>Hari tertentu</strong>
-                  <small>Pilih hari yang realistis untukmu.</small>
+                  <strong>Specific days</strong>
+                  <small>Pick days that are realistic for you.</small>
                 </span>
               </label>
             </div>
@@ -613,21 +613,21 @@
           </fieldset>
 
           <fieldset class="field days-field" id="habit-days-group">
-            <legend>Pilih hari</legend>
+            <legend>Pick days</legend>
             <div class="day-options">
-              <label class="day-option"><input type="checkbox" name="days" value="1"><span>Sen</span></label>
-              <label class="day-option"><input type="checkbox" name="days" value="2"><span>Sel</span></label>
-              <label class="day-option"><input type="checkbox" name="days" value="3"><span>Rab</span></label>
-              <label class="day-option"><input type="checkbox" name="days" value="4"><span>Kam</span></label>
-              <label class="day-option"><input type="checkbox" name="days" value="5"><span>Jum</span></label>
-              <label class="day-option"><input type="checkbox" name="days" value="6"><span>Sab</span></label>
-              <label class="day-option"><input type="checkbox" name="days" value="0"><span>Min</span></label>
+              <label class="day-option"><input type="checkbox" name="days" value="1"><span>Mon</span></label>
+              <label class="day-option"><input type="checkbox" name="days" value="2"><span>Tue</span></label>
+              <label class="day-option"><input type="checkbox" name="days" value="3"><span>Wed</span></label>
+              <label class="day-option"><input type="checkbox" name="days" value="4"><span>Thu</span></label>
+              <label class="day-option"><input type="checkbox" name="days" value="5"><span>Fri</span></label>
+              <label class="day-option"><input type="checkbox" name="days" value="6"><span>Sat</span></label>
+              <label class="day-option"><input type="checkbox" name="days" value="0"><span>Sun</span></label>
             </div>
             <p class="field-error" id="habit-days-error" role="alert" hidden></p>
           </fieldset>
 
           <div class="field">
-            <label for="habit-description">Deskripsi <span class="optional">opsional</span></label>
+            <label for="habit-description">Description <span class="optional">optional</span></label>
             <textarea id="habit-description" name="description" rows="3" maxlength="280" aria-describedby="habit-description-error"></textarea>
             <p class="field-error" id="habit-description-error" role="alert" hidden></p>
           </div>
@@ -637,9 +637,9 @@
         </div>
 
         <footer class="dialog-actions">
-          <button class="button button-quiet" type="button" data-dialog-close>Batal</button>
+          <button class="button button-quiet" type="button" data-dialog-close>Cancel</button>
           <button class="button button-primary" type="submit" id="habit-submit">
-            <span id="habit-submit-label">Simpan kebiasaan</span>
+            <span id="habit-submit-label">Save habit</span>
           </button>
         </footer>
       </form>
@@ -648,17 +648,17 @@
     <dialog class="confirm-dialog" id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-message">
       <div class="confirm-head">
         <span class="confirm-icon" aria-hidden="true">
-          <svg><use href="#icon-alert" id="confirm-icon-use"></use></svg>
+          <svg><use href="#icon-alert"></use></svg>
         </span>
         <div>
-          <p class="eyebrow" id="confirm-eyebrow">Konfirmasi</p>
-          <h2 id="confirm-title">Hapus kebiasaan?</h2>
+          <p class="eyebrow" id="confirm-eyebrow">Confirm</p>
+          <h2 id="confirm-title">Delete habit?</h2>
         </div>
       </div>
       <p id="confirm-message"></p>
       <div class="dialog-actions">
-        <button class="button button-quiet" type="button" id="confirm-cancel">Batal</button>
-        <button class="button button-danger" type="button" id="confirm-action">Hapus</button>
+        <button class="button button-quiet" type="button" id="confirm-cancel">Cancel</button>
+        <button class="button button-danger" type="button" id="confirm-action">Delete</button>
       </div>
     </dialog>
 
@@ -667,13 +667,13 @@
         <svg><use href="#icon-check"></use></svg>
       </span>
       <p id="toast-message"></p>
-      <button class="toast-close" id="toast-close" type="button" aria-label="Tutup notifikasi">
+      <button class="toast-close" id="toast-close" type="button" aria-label="Close notification">
         <svg aria-hidden="true"><use href="#icon-x"></use></svg>
       </button>
     </div>
 
     <noscript>
-      <div class="noscript-message">Ritme membutuhkan JavaScript untuk menampilkan dan menyimpan kebiasaan.</div>
+      <div class="noscript-message">Ritme requires JavaScript to display and save habits.</div>
     </noscript>
 
     <script type="module" src="js/app.js"></script>
