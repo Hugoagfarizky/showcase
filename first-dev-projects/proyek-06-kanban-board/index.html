@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kanban Board — Ruang kerja</title>
+  <title>Kanban Board — Workspace</title>
   <meta
     name="description"
-    content="Kanban Board adalah papan kerja tiga kolom untuk mengelola tugas, prioritas, tenggat, dan progres dengan penyimpanan lokal di browser."
+    content="Kanban Board is a three-column task board for managing tasks, priorities, deadlines, and progress with local storage in the browser."
   />
   <link
     rel="icon"
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
     <symbol id="icon-plus" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@
 
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#main-content" aria-label="Kanban Board — kembali ke atas">
+      <a class="brand" href="#main-content" aria-label="Kanban Board — back to top">
         <span class="brand-mark" aria-hidden="true">
           <span></span>
           <span></span>
@@ -92,7 +92,7 @@
         </span>
         <span class="brand-copy">
           <strong>Kanban Board</strong>
-          <span>Ruang kerja pribadi</span>
+          <span>Personal workspace</span>
         </span>
       </a>
 
@@ -101,7 +101,7 @@
         <span class="header-date" id="today-label"></span>
         <button class="button button-primary" id="new-task-button" type="button">
           <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
-          <span>Tugas baru</span>
+          <span>New task</span>
         </button>
       </div>
     </div>
@@ -110,11 +110,11 @@
   <main class="shell" id="main-content">
     <section class="page-intro" aria-labelledby="page-title">
       <div class="intro-copy">
-        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Papan kerja aktif</p>
-        <h1 id="page-title">Alur kerja yang <span>terlihat jelas.</span></h1>
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Active board</p>
+        <h1 id="page-title">A workflow that stays <span>clear.</span></h1>
         <p class="lede">
-          Susun prioritas, pantau progres, dan pindahkan pekerjaan antar kolom.
-          Semua perubahan tersimpan otomatis di browser ini.
+          Prioritize work, track progress, and move tasks between columns.
+          All changes are saved automatically in this browser.
         </p>
       </div>
       <div class="intro-note">
@@ -122,47 +122,47 @@
           <svg class="icon"><use href="#icon-move"></use></svg>
         </span>
         <div>
-          <strong>Drag untuk mengatur alur</strong>
-          <span>Di perangkat sentuh, gunakan menu pada kartu atau ubah status di dialog detail.</span>
+          <strong>Drag to organize the flow</strong>
+          <span>On touch devices, use the card menu or change the status in the detail dialog.</span>
         </div>
       </div>
     </section>
 
     <section class="stats-panel" aria-labelledby="stats-title">
-      <h2 class="visually-hidden" id="stats-title">Ringkasan papan</h2>
+      <h2 class="visually-hidden" id="stats-title">Board summary</h2>
       <div class="stat-cell">
-        <span class="stat-label">Total tugas</span>
+        <span class="stat-label">Total tasks</span>
         <strong class="stat-value" id="stat-total">0</strong>
-        <span class="stat-caption">di papan ini</span>
+        <span class="stat-caption">on this board</span>
       </div>
       <div class="stat-cell stat-todo">
         <span class="stat-label"><span class="status-dot" aria-hidden="true"></span>To Do</span>
         <strong class="stat-value" id="stat-todo">0</strong>
-        <span class="stat-caption">belum dimulai</span>
+        <span class="stat-caption">not started</span>
       </div>
       <div class="stat-cell stat-progress">
         <span class="stat-label"><span class="status-dot" aria-hidden="true"></span>In Progress</span>
         <strong class="stat-value" id="stat-progress">0</strong>
-        <span class="stat-caption">sedang dikerjakan</span>
+        <span class="stat-caption">in progress</span>
       </div>
       <div class="stat-cell stat-done">
         <span class="stat-label"><span class="status-dot" aria-hidden="true"></span>Done</span>
         <strong class="stat-value" id="stat-done">0</strong>
-        <span class="stat-caption">selesai</span>
+        <span class="stat-caption">completed</span>
       </div>
       <div class="stat-cell stat-completion">
         <div class="completion-head">
           <div>
-            <span class="stat-label">Penyelesaian</span>
+            <span class="stat-label">Completion</span>
             <strong class="stat-value" id="stat-percent">0%</strong>
           </div>
-          <span class="stat-caption">dari total tugas</span>
+          <span class="stat-caption">of total tasks</span>
         </div>
         <div
           class="progress-track"
           id="completion-bar"
           role="progressbar"
-          aria-label="Persentase penyelesaian"
+          aria-label="Completion percentage"
           aria-valuemin="0"
           aria-valuemax="100"
           aria-valuenow="0"
@@ -177,7 +177,7 @@
         <svg class="icon"><use href="#icon-alert"></use></svg>
       </span>
       <div class="storage-banner-copy">
-        <strong>Perhatian pada data lokal</strong>
+        <strong>Local data notice</strong>
         <p id="storage-banner-message"></p>
       </div>
       <button class="button button-quiet" id="storage-reset-button" type="button" hidden>Reset data</button>
@@ -188,12 +188,12 @@
         <svg class="icon"><use href="#icon-inbox"></use></svg>
       </span>
       <div class="state-copy">
-        <h2 id="empty-board-title">Papan masih kosong</h2>
-        <p>Mulai dari satu tugas kecil. Kartu pertama akan membantu Anda melihat alur kerja.</p>
+        <h2 id="empty-board-title">Board is empty</h2>
+        <p>Start with one small task. The first card will help you see the workflow.</p>
       </div>
       <button class="button button-primary" id="empty-board-create" type="button">
         <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
-        <span>Buat tugas pertama</span>
+        <span>Create first task</span>
       </button>
     </section>
 
@@ -202,37 +202,37 @@
         <svg class="icon"><use href="#icon-search"></use></svg>
       </span>
       <div class="state-copy">
-        <h2 id="empty-filter-title">Tidak ada tugas yang cocok</h2>
-        <p>Coba kata kunci lain atau longgarkan filter yang sedang aktif.</p>
+        <h2 id="empty-filter-title">No matching tasks</h2>
+        <p>Try another keyword or relax the active filters.</p>
       </div>
-      <button class="button button-secondary" id="empty-filter-clear" type="button">Hapus filter</button>
+      <button class="button button-secondary" id="empty-filter-clear" type="button">Clear filters</button>
     </section>
 
     <section class="filter-bar" aria-labelledby="filter-heading">
-      <h2 class="visually-hidden" id="filter-heading">Cari dan filter tugas</h2>
+      <h2 class="visually-hidden" id="filter-heading">Search and filter tasks</h2>
       <div class="search-field">
         <svg class="icon search-icon" aria-hidden="true"><use href="#icon-search"></use></svg>
-        <label class="visually-hidden" for="search-input">Cari judul atau deskripsi tugas</label>
+        <label class="visually-hidden" for="search-input">Search task title or description</label>
         <input
           id="search-input"
           type="search"
-          placeholder="Cari judul atau deskripsi..."
+          placeholder="Search title or description..."
           autocomplete="off"
           spellcheck="false"
         />
-        <button class="search-clear" id="clear-search" type="button" aria-label="Hapus pencarian" hidden>
+        <button class="search-clear" id="clear-search" type="button" aria-label="Clear search" hidden>
           <svg class="icon" aria-hidden="true"><use href="#icon-x"></use></svg>
         </button>
       </div>
 
       <div class="filter-control">
-        <label for="priority-filter">Prioritas</label>
+        <label for="priority-filter">Priority</label>
         <div class="select-wrap">
           <select id="priority-filter">
-            <option value="all">Semua prioritas</option>
-            <option value="high">Tinggi</option>
-            <option value="medium">Sedang</option>
-            <option value="low">Rendah</option>
+            <option value="all">All priorities</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
           </select>
           <svg class="icon select-chevron" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
         </div>
@@ -242,8 +242,8 @@
         <label for="label-filter">Label</label>
         <div class="select-wrap">
           <select id="label-filter">
-            <option value="all">Semua label</option>
-            <option value="__none__">Tanpa label</option>
+            <option value="all">All labels</option>
+            <option value="__none__">No label</option>
           </select>
           <svg class="icon select-chevron" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
         </div>
@@ -251,7 +251,7 @@
 
       <button class="button button-quiet clear-filters" id="clear-filters" type="button" hidden>
         <svg class="icon" aria-hidden="true"><use href="#icon-x"></use></svg>
-        <span>Hapus filter</span>
+        <span>Clear filters</span>
       </button>
 
       <p class="filter-summary" id="filter-summary" role="status" aria-live="polite"></p>
@@ -260,12 +260,12 @@
     <section class="board-section" aria-labelledby="board-title">
       <div class="board-heading">
         <div>
-          <p class="eyebrow">Alur kerja</p>
-          <h2 id="board-title">Papan tugas</h2>
+          <p class="eyebrow">Workflow</p>
+          <h2 id="board-title">Task board</h2>
         </div>
         <p class="board-hint" id="board-hint">
           <svg class="icon" aria-hidden="true"><use href="#icon-move"></use></svg>
-          <span>Tarik kartu di desktop, atau gunakan menu kartu untuk memindahkan.</span>
+          <span>Drag cards on desktop, or use the card menu to move them.</span>
         </p>
       </div>
 
@@ -276,9 +276,9 @@
               <div class="column-heading">
                 <span class="status-dot" aria-hidden="true"></span>
                 <h3 id="column-todo-title">To Do</h3>
-                <span class="column-count" id="count-todo" aria-label="0 tugas">0</span>
+                <span class="column-count" id="count-todo" aria-label="0 tasks">0</span>
               </div>
-              <button class="column-add" type="button" data-add-status="todo" aria-label="Tambah tugas ke To Do" title="Tambah tugas ke To Do">
+              <button class="column-add" type="button" data-add-status="todo" aria-label="Add task to To Do" title="Add task to To Do">
                 <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
               </button>
             </header>
@@ -286,7 +286,7 @@
             <div class="task-list" id="task-list-todo" data-status="todo" role="list" aria-labelledby="column-todo-title"></div>
             <div class="column-empty" id="empty-todo" hidden>
               <span class="column-empty-icon" aria-hidden="true"><svg class="icon"><use href="#icon-inbox"></use></svg></span>
-              <p>Belum ada tugas di kolom ini. Tarik kartu ke sini atau buat tugas baru.</p>
+              <p>No tasks in this column yet. Drag a card here or create a new task.</p>
             </div>
           </section>
 
@@ -295,9 +295,9 @@
               <div class="column-heading">
                 <span class="status-dot" aria-hidden="true"></span>
                 <h3 id="column-progress-title">In Progress</h3>
-                <span class="column-count" id="count-in-progress" aria-label="0 tugas">0</span>
+                <span class="column-count" id="count-in-progress" aria-label="0 tasks">0</span>
               </div>
-              <button class="column-add" type="button" data-add-status="in-progress" aria-label="Tambah tugas ke In Progress" title="Tambah tugas ke In Progress">
+              <button class="column-add" type="button" data-add-status="in-progress" aria-label="Add task to In Progress" title="Add task to In Progress">
                 <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
               </button>
             </header>
@@ -305,7 +305,7 @@
             <div class="task-list" id="task-list-in-progress" data-status="in-progress" role="list" aria-labelledby="column-progress-title"></div>
             <div class="column-empty" id="empty-in-progress" hidden>
               <span class="column-empty-icon" aria-hidden="true"><svg class="icon"><use href="#icon-inbox"></use></svg></span>
-              <p>Belum ada tugas di kolom ini. Tarik kartu ke sini atau buat tugas baru.</p>
+              <p>No tasks in this column yet. Drag a card here or create a new task.</p>
             </div>
           </section>
 
@@ -314,9 +314,9 @@
               <div class="column-heading">
                 <span class="status-dot" aria-hidden="true"></span>
                 <h3 id="column-done-title">Done</h3>
-                <span class="column-count" id="count-done" aria-label="0 tugas">0</span>
+                <span class="column-count" id="count-done" aria-label="0 tasks">0</span>
               </div>
-              <button class="column-add" type="button" data-add-status="done" aria-label="Tambah tugas ke Done" title="Tambah tugas ke Done">
+              <button class="column-add" type="button" data-add-status="done" aria-label="Add task to Done" title="Add task to Done">
                 <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
               </button>
             </header>
@@ -324,7 +324,7 @@
             <div class="task-list" id="task-list-done" data-status="done" role="list" aria-labelledby="column-done-title"></div>
             <div class="column-empty" id="empty-done" hidden>
               <span class="column-empty-icon" aria-hidden="true"><svg class="icon"><use href="#icon-inbox"></use></svg></span>
-              <p>Belum ada tugas di kolom ini. Tarik kartu ke sini atau buat tugas baru.</p>
+              <p>No tasks in this column yet. Drag a card here or create a new task.</p>
             </div>
           </section>
         </div>
@@ -334,8 +334,8 @@
 
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <p><span class="footer-mark" aria-hidden="true"></span> Data tersimpan di browser ini. Tidak ada akun atau server.</p>
-      <a href="README.md">Baca dokumentasi</a>
+      <p><span class="footer-mark" aria-hidden="true"></span> Data stored in this browser. No account or server.</p>
+      <a href="README.md">Read documentation</a>
     </div>
   </footer>
 
@@ -343,11 +343,11 @@
     <form id="task-form" novalidate>
       <div class="dialog-header">
         <div>
-          <p class="eyebrow">Detail tugas</p>
-          <h2 id="task-dialog-title">Tugas baru</h2>
-          <p class="dialog-subtitle" id="task-dialog-subtitle">Tambahkan detail yang cukup agar pekerjaan mudah dilanjutkan.</p>
+          <p class="eyebrow">Task details</p>
+          <h2 id="task-dialog-title">New task</h2>
+          <p class="dialog-subtitle" id="task-dialog-subtitle">Add enough detail so the work can be continued easily.</p>
         </div>
-        <button class="icon-button dialog-close" type="button" data-dialog-close aria-label="Tutup dialog tugas">
+        <button class="icon-button dialog-close" type="button" data-dialog-close aria-label="Close task dialog">
           <svg class="icon" aria-hidden="true"><use href="#icon-x"></use></svg>
         </button>
       </div>
@@ -356,7 +356,7 @@
         <input type="hidden" id="task-id" name="task-id" />
 
         <div class="field">
-          <label for="task-title">Judul <span class="required" aria-hidden="true">*</span></label>
+          <label for="task-title">Title <span class="required" aria-hidden="true">*</span></label>
           <input
             id="task-title"
             name="title"
@@ -366,12 +366,12 @@
             required
             aria-describedby="task-title-hint task-title-error"
           />
-          <p class="field-hint" id="task-title-hint">Tulis judul singkat yang langsung menjelaskan pekerjaan.</p>
+          <p class="field-hint" id="task-title-hint">Write a short title that directly describes the work.</p>
           <p class="field-error" id="task-title-error" role="alert"></p>
         </div>
 
         <div class="field">
-          <label for="task-description">Deskripsi <span class="optional">opsional</span></label>
+          <label for="task-description">Description <span class="optional">optional</span></label>
           <textarea
             id="task-description"
             name="description"
@@ -397,12 +397,12 @@
           </div>
 
           <div class="field">
-            <label for="task-priority">Prioritas</label>
+            <label for="task-priority">Priority</label>
             <div class="select-wrap">
               <select id="task-priority" name="priority" aria-describedby="task-priority-error">
-                <option value="low">Rendah</option>
-                <option value="medium">Sedang</option>
-                <option value="high">Tinggi</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
               </select>
               <svg class="icon select-chevron" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
             </div>
@@ -412,7 +412,7 @@
 
         <div class="form-grid">
           <div class="field">
-            <label for="task-label">Label <span class="optional">opsional</span></label>
+            <label for="task-label">Label <span class="optional">optional</span></label>
             <input
               id="task-label"
               name="label"
@@ -420,7 +420,7 @@
               maxlength="40"
               autocomplete="off"
               list="label-suggestions"
-              placeholder="Contoh: Klien, Produk"
+              placeholder="Example: Client, Product"
               aria-describedby="task-label-error"
             />
             <datalist id="label-suggestions"></datalist>
@@ -428,20 +428,20 @@
           </div>
 
           <div class="field">
-            <label for="task-due-date">Tenggat <span class="optional">opsional</span></label>
+            <label for="task-due-date">Due date <span class="optional">optional</span></label>
             <input id="task-due-date" name="dueDate" type="date" aria-describedby="task-due-hint task-due-error" />
-            <p class="field-hint" id="task-due-hint">Kosongkan jika belum ada tenggat.</p>
+            <p class="field-hint" id="task-due-hint">Leave empty if there is no deadline.</p>
             <p class="field-error" id="task-due-error" role="alert"></p>
           </div>
         </div>
 
         <div class="task-meta-info" id="task-meta" hidden>
           <div>
-            <span class="meta-label"><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg>Dibuat</span>
+            <span class="meta-label"><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg>Created</span>
             <span id="task-created">-</span>
           </div>
           <div>
-            <span class="meta-label"><svg class="icon" aria-hidden="true"><use href="#icon-edit"></use></svg>Diperbarui</span>
+            <span class="meta-label"><svg class="icon" aria-hidden="true"><use href="#icon-edit"></use></svg>Updated</span>
             <span id="task-updated">-</span>
           </div>
         </div>
@@ -452,11 +452,11 @@
       <div class="dialog-footer">
         <button class="button button-danger-quiet" id="delete-task-button" type="button" hidden>
           <svg class="icon" aria-hidden="true"><use href="#icon-trash"></use></svg>
-          <span>Hapus tugas</span>
+          <span>Delete task</span>
         </button>
         <div class="dialog-footer-actions">
-          <button class="button button-secondary" type="button" data-dialog-close>Batal</button>
-          <button class="button button-primary" id="submit-task-button" type="submit">Buat tugas</button>
+          <button class="button button-secondary" type="button" data-dialog-close>Cancel</button>
+          <button class="button button-primary" id="submit-task-button" type="submit">Create task</button>
         </div>
       </div>
     </form>
@@ -467,25 +467,22 @@
       <span class="confirm-icon" aria-hidden="true">
         <svg class="icon"><use href="#icon-trash"></use></svg>
       </span>
-      <p class="eyebrow" id="confirm-eyebrow">Konfirmasi</p>
-      <h2 id="confirm-title">Hapus tugas?</h2>
-      <p id="confirm-message">Tindakan ini tidak dapat dibatalkan.</p>
+      <p class="eyebrow">Confirm</p>
+      <h2 id="confirm-title">Delete task?</h2>
+      <p id="confirm-message">This action cannot be undone.</p>
       <div class="confirm-actions">
-        <button class="button button-secondary" id="confirm-cancel" type="button">Batal</button>
-        <button class="button button-danger" id="confirm-action" type="button">Hapus tugas</button>
+        <button class="button button-secondary" id="confirm-cancel" type="button">Cancel</button>
+        <button class="button button-danger" id="confirm-action" type="button">Delete task</button>
       </div>
     </div>
   </dialog>
 
-  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" data-type="success" hidden>
-    <span class="toast-icon" id="toast-icon" aria-hidden="true"></span>
-    <span id="toast-message"></span>
-  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <noscript>
-    <p class="noscript-message">Aplikasi ini membutuhkan JavaScript untuk menampilkan dan menyimpan tugas.</p>
+    <p class="noscript">Kanban Board requires JavaScript to manage the board.</p>
   </noscript>
 
-  <script type="module" src="js/app.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
