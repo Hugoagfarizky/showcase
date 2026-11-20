@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Cuaca Kita adalah dashboard cuaca aktual dan prakiraan tujuh hari dengan data Open-Meteo." />
+  <meta name="description" content="Cuaca Kita is a current weather and 7-day forecast dashboard powered by Open-Meteo." />
   <meta name="theme-color" content="#f3f0e7" />
-  <title>Cuaca Kita — Dashboard cuaca harian</title>
+  <title>Cuaca Kita — Daily weather dashboard</title>
   <link
     rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23175c4f'/%3E%3Ccircle cx='26' cy='25' r='9' fill='%23f4c35f'/%3E%3Cpath d='M20 46h25a8 8 0 0 0 1-15.9A11 11 0 0 0 25 32a7 7 0 0 0-5 14Z' fill='%23fffaf0'/%3E%3C/svg%3E"
@@ -14,7 +14,7 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <div class="ambient" aria-hidden="true">
     <span class="ambient-orb ambient-sun"></span>
@@ -24,13 +24,13 @@
 
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#main-content" aria-label="Cuaca Kita — kembali ke atas">
+      <a class="brand" href="#main-content" aria-label="Cuaca Kita — back to top">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 64 64"><use href="#icon-partly-day"></use></svg>
         </span>
         <span class="brand-copy">
           <strong>Cuaca Kita</strong>
-          <span>Dashboard cuaca harian</span>
+          <span>Daily weather dashboard</span>
         </span>
       </a>
 
@@ -39,19 +39,19 @@
           id="my-location-button"
           class="button button-light"
           type="button"
-          aria-label="Gunakan lokasi saya"
+          aria-label="Use my location"
         >
           <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-pin"></use></svg>
-          <span>Lokasi saya</span>
+          <span>My location</span>
         </button>
         <button
           id="reset-location-button"
           class="button button-outline"
           type="button"
-          aria-label="Kembali ke lokasi awal, Jakarta"
+          aria-label="Reset to initial location, Jakarta"
         >
           <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-refresh"></use></svg>
-          <span>Kembali ke awal</span>
+          <span>Reset</span>
         </button>
       </div>
     </div>
@@ -60,17 +60,17 @@
   <main id="main-content" class="shell main-content">
     <section class="intro" aria-labelledby="page-title">
       <div class="intro-copy">
-        <p class="eyebrow">Prakiraan dari Open-Meteo</p>
-        <h1 id="page-title">Cuaca hari ini,<br /><span>tanpa tebak-tebakan.</span></h1>
+        <p class="eyebrow">Forecast from Open-Meteo</p>
+        <h1 id="page-title">Today's weather,<br /><span>no guessing.</span></h1>
         <p class="intro-lead">
-          Suhu, angin, kelembapan, dan prakiraan tujuh hari dalam satu tampilan yang tenang.
-          Cari kota mana pun untuk mulai membaca langitnya.
+          Temperature, wind, humidity, and a 7-day forecast in one calm view.
+          Search any city to start reading the sky.
         </p>
       </div>
 
       <div class="search-card">
         <form id="search-form" novalidate>
-          <label for="city-input">Cari kota atau lokasi</label>
+          <label for="city-input">Search city or location</label>
           <div class="search-row">
             <div class="search-input-wrap">
               <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-search"></use></svg>
@@ -78,23 +78,23 @@
                 id="city-input"
                 name="city"
                 type="search"
-                placeholder="Contoh: Bandung, Tokyo, London"
+                placeholder="Example: Bandung, Tokyo, London"
                 autocomplete="off"
                 maxlength="80"
                 aria-describedby="search-hint search-error"
               />
             </div>
-            <button id="search-button" class="button button-primary" type="submit">Cari cuaca</button>
+            <button id="search-button" class="button button-primary" type="submit">Search weather</button>
           </div>
           <p id="search-hint" class="field-hint">
-            Gunakan nama kota dalam bahasa Indonesia atau Inggris. Hasil pencarian berasal dari Open-Meteo.
+            Use city names in Indonesian or English. Search results come from Open-Meteo.
           </p>
           <p id="search-error" class="field-error" role="alert" hidden></p>
         </form>
 
         <div id="search-results" class="search-results" hidden aria-labelledby="search-results-title">
           <div class="results-head">
-            <p id="search-results-title">Pilih lokasi yang sesuai</p>
+            <p id="search-results-title">Choose a matching location</p>
             <span id="search-results-count" class="results-count"></span>
           </div>
           <ul id="search-results-list" class="results-list"></ul>
@@ -105,8 +105,8 @@
     <section id="loading-panel" class="state-panel loading-panel" hidden role="status" aria-live="polite">
       <span class="spinner" aria-hidden="true"></span>
       <div class="state-copy">
-        <h2 id="loading-title">Memuat data cuaca...</h2>
-        <p id="loading-message">Menghubungi layanan cuaca Open-Meteo.</p>
+        <h2 id="loading-title">Loading weather data...</h2>
+        <p id="loading-message">Contacting the Open-Meteo weather service.</p>
       </div>
       <div class="loading-skeleton" aria-hidden="true">
         <span></span><span></span><span></span>
@@ -118,25 +118,25 @@
         <svg viewBox="0 0 24 24"><use href="#icon-alert"></use></svg>
       </span>
       <div class="state-copy">
-        <p class="eyebrow">Langit belum bisa dibaca</p>
-        <h2 id="error-title">Data cuaca belum bisa dimuat</h2>
+        <p class="eyebrow">Sky not readable yet</p>
+        <h2 id="error-title">Weather data could not be loaded</h2>
         <p id="error-message"></p>
       </div>
-      <button id="retry-button" class="button button-primary" type="button" hidden>Coba lagi</button>
+      <button id="retry-button" class="button button-primary" type="button" hidden>Try again</button>
     </section>
 
     <div id="dashboard" class="dashboard" hidden>
-      <section class="weather-grid" aria-label="Kondisi cuaca saat ini">
+      <section class="weather-grid" aria-label="Current weather conditions">
         <article id="current-card" class="current-card" data-theme="cloudy-day">
           <span class="current-glow" aria-hidden="true"></span>
 
           <div class="current-head">
             <div class="location-block">
-              <p class="hero-kicker">Cuaca saat ini</p>
+              <p class="hero-kicker">Current weather</p>
               <h2 id="location-name">Jakarta</h2>
               <p id="location-region" class="location-region">DKI Jakarta, Indonesia</p>
             </div>
-            <p id="day-badge" class="day-badge">Siang</p>
+            <p id="day-badge" class="day-badge">Day</p>
           </div>
 
           <div class="current-body">
@@ -145,22 +145,22 @@
               <p class="current-temperature">
                 <span id="current-temperature">--</span><span class="temperature-unit">°C</span>
               </p>
-              <p id="current-description" class="current-description">Memuat kondisi...</p>
-              <p id="observation-time" class="observation-time">Waktu pengamatan belum tersedia.</p>
+              <p id="current-description" class="current-description">Loading conditions...</p>
+              <p id="observation-time" class="observation-time">Observation time not available yet.</p>
             </div>
           </div>
 
           <dl class="hero-facts">
             <div>
-              <dt>Terasa seperti</dt>
+              <dt>Feels like</dt>
               <dd id="feels-like">--</dd>
             </div>
             <div>
-              <dt>Kelembapan</dt>
+              <dt>Humidity</dt>
               <dd id="humidity">--</dd>
             </div>
             <div>
-              <dt>Angin</dt>
+              <dt>Wind</dt>
               <dd id="wind-speed">--</dd>
             </div>
           </dl>
@@ -168,36 +168,36 @@
 
         <aside class="detail-card" aria-labelledby="details-title">
           <div class="detail-head">
-            <p class="eyebrow">Ringkasan</p>
-            <h2 id="details-title">Detail hari ini</h2>
+            <p class="eyebrow">Summary</p>
+            <h2 id="details-title">Today's details</h2>
           </div>
 
           <dl class="detail-grid">
             <div class="detail-item">
               <dt>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-droplet"></use></svg>
-                Curah hujan
+                Precipitation
               </dt>
               <dd id="precipitation">--</dd>
             </div>
             <div class="detail-item">
               <dt>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sunrise"></use></svg>
-                Matahari terbit
+                Sunrise
               </dt>
               <dd id="sunrise">--</dd>
             </div>
             <div class="detail-item">
               <dt>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sunset"></use></svg>
-                Matahari terbenam
+                Sunset
               </dt>
               <dd id="sunset">--</dd>
             </div>
             <div class="detail-item detail-timezone">
               <dt>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-clock"></use></svg>
-                Zona waktu
+                Time zone
               </dt>
               <dd id="timezone-label">--</dd>
             </div>
@@ -210,33 +210,33 @@
       <section class="panel hourly-panel" aria-labelledby="hourly-title">
         <div class="panel-head">
           <div>
-            <p class="eyebrow">Per jam</p>
-            <h2 id="hourly-title">Prakiraan 24 jam</h2>
+            <p class="eyebrow">Hourly</p>
+            <h2 id="hourly-title">24-hour forecast</h2>
           </div>
-          <p class="panel-sub">Waktu setempat · geser untuk melihat semua</p>
+          <p class="panel-sub">Local time · scroll to see all</p>
         </div>
         <ul
           id="hourly-list"
           class="hourly-list"
           tabindex="0"
-          aria-label="Prakiraan cuaca per jam, dapat digeser"
+          aria-label="Hourly weather forecast, scrollable"
         ></ul>
       </section>
 
       <section class="panel daily-panel" aria-labelledby="daily-title">
         <div class="panel-head">
           <div>
-            <p class="eyebrow">Seminggu ke depan</p>
-            <h2 id="daily-title">Prakiraan 7 hari</h2>
+            <p class="eyebrow">Week ahead</p>
+            <h2 id="daily-title">7-day forecast</h2>
           </div>
-          <p class="panel-sub">Suhu minimum dan maksimum · peluang hujan</p>
+          <p class="panel-sub">Min and max temperature · rain chance</p>
         </div>
         <ul id="daily-list" class="daily-list"></ul>
       </section>
 
       <p class="source-note">
-        Sumber data: <a href="https://open-meteo.com/" rel="noopener noreferrer">Open-Meteo</a>.
-        Perkiraan cuaca dapat berubah dan bukan peringatan resmi.
+        Data source: <a href="https://open-meteo.com/" rel="noopener noreferrer">Open-Meteo</a>.
+        Weather forecasts can change and are not official warnings.
       </p>
     </div>
 
@@ -245,18 +245,18 @@
 
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <p>Cuaca Kita <span aria-hidden="true">·</span> dibaca dari data terbuka Open-Meteo.</p>
-      <p>Dibuat untuk latihan vibecoding.</p>
+      <p>Cuaca Kita <span aria-hidden="true">·</span> read from Open-Meteo open data.</p>
+      <p>Built for vibecoding practice.</p>
     </div>
   </footer>
 
   <noscript>
     <p class="noscript-message">
-      Cuaca Kita memerlukan JavaScript untuk mengambil data cuaca. Aktifkan JavaScript di browser Anda.
+      Cuaca Kita requires JavaScript to fetch weather data. Enable JavaScript in your browser.
     </p>
   </noscript>
 
-  <svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
     <symbol id="icon-clear-day" viewBox="0 0 64 64">
       <circle cx="32" cy="30" r="10.5" fill="#f4c35f" />
       <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.92">
