@@ -277,27 +277,73 @@
       <div class="block-head">
         <span class="eyebrow">About</span>
         <h2>About this showcase</h2>
-        <p>What this site is and how it is built.</p>
+        <p>What this site is, why it exists, and how it is built.</p>
       </div>
+
       <div class="project">
+        <h3 style="margin-top:0;">What is this?</h3>
         <p class="desc">
-          This showcase hosts the deployed builds of private repositories. The source code stays
-          private; only the compiled output is published here. Each app is a single-page or
-          multi-page static site served from a subfolder, so the URLs are stable and shareable.
+          This showcase hosts the <strong>deployed builds</strong> of private repositories.
+          The source code stays private; only the compiled output is published here, so the
+          apps can be shared and demoed without exposing the codebase. Each app is a
+          single-page or multi-page static site served from its own subfolder, which keeps
+          the URLs stable and shareable.
         </p>
+
+        <h3>Why a separate showcase repo?</h3>
+        <p class="desc">
+          Most of the source repositories are private (personal experiments, coursework, and
+          prototypes). GitHub Pages on a free plan only serves public repositories, so the
+          builds are collected here into one public site. This keeps the source private while
+          still giving every app a public, permanent link.
+        </p>
+
+        <h3>How it works</h3>
         <ul class="features">
-          <li>Static hosting on GitHub Pages (no backend, no database).</li>
-          <li>Auto-rebuild on every push to the source repos (GitHub Actions).</li>
-          <li>Apps are framework-free or use React/Vite/Next.js static export.</li>
-          <li>All data stays in the visitor's browser (localStorage / IndexedDB).</li>
+          <li><strong>Build locally / in CI</strong> — each app is built with its own toolchain (Vite, Next.js static export, Flutter web).</li>
+          <li><strong>Base path</strong> — apps are built with a base path like <code>/showcase/monorepo/</code> so assets resolve correctly under the subfolder.</li>
+          <li><strong>Collect</strong> — the compiled <code>dist/</code> (or <code>out/</code>, <code>build/web/</code>) output is copied into a matching subfolder of this repo.</li>
+          <li><strong>Publish</strong> — GitHub Pages serves the whole folder tree; each subfolder becomes its own URL.</li>
+          <li><strong>Auto-update</strong> — pushing to a source repo triggers a rebuild and a redeploy of this site.</li>
         </ul>
+
+        <h3>Stack &amp; hosting</h3>
         <div class="chips">
           <span class="chip">GitHub Pages</span><span class="chip">GitHub Actions</span>
-          <span class="chip">React</span><span class="chip">Vite</span><span class="chip">Next.js</span>
+          <span class="chip">React 19</span><span class="chip">Vite 8</span>
+          <span class="chip">Next.js 16 (static export)</span>
           <span class="chip">Flutter Web</span><span class="chip">Vanilla JS</span>
+          <span class="chip">Tailwind CSS v4</span><span class="chip">TypeScript</span>
+        </div>
+
+        <h3>Privacy &amp; data</h3>
+        <ul class="features">
+          <li>No backend and no database — every app runs entirely in the visitor's browser.</li>
+          <li>User data (notes, tasks, pantry, etc.) is stored in <code>localStorage</code> / <code>IndexedDB</code> on the visitor's own device.</li>
+          <li>Nothing is uploaded, tracked, or sent to any server. No analytics, no telemetry.</li>
+          <li>Third-party APIs (TMDB, Open-Meteo, GitHub REST) are called directly from the browser where needed.</li>
+        </ul>
+
+        <h3>Project structure</h3>
+        <ul class="features">
+          <li><code>/</code> — this landing page.</li>
+          <li><code>/monorepo/</code>, <code>/repoforge/</code>, <code>/gitcraft/</code> — React/Vite apps.</li>
+          <li><code>/first-dev-projects/</code> — index of 20 mini-projects, each in its own subfolder.</li>
+          <li><code>/first-dev-projects/proyek-XX-*/</code> — individual static apps (HTML/CSS/JS).</li>
+        </ul>
+
+        <h3>Contact</h3>
+        <p class="desc">
+          Built and maintained by <a href="https://github.com/Hugoagfarizky">Hugo Agfarizky</a>.
+          Questions, feedback, or collaboration ideas are welcome via GitHub or email.
+        </p>
+        <div class="project-actions">
+          <a class="btn primary" href="https://github.com/Hugoagfarizky">GitHub profile →</a>
+          <a class="btn" href="mailto:nugrahaagfarizky@gmail.com">Email →</a>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site">
