@@ -3,44 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>First Dev Projects</title>
+  <title>First Dev Projects (20 proyek)</title>
   <style>
     :root { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#f59e0b; }
     * { box-sizing: border-box; }
     body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; }
-    .wrap { max-width: 960px; margin: 0 auto; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
     h1 { font-size: 2rem; margin: 0 0 .5rem; }
     p.sub { color: var(--muted); margin: 0 0 2rem; }
     .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
     .card { background: var(--card); border: 1px solid #334155; border-radius: 12px; padding: 1.25rem; text-decoration: none; color: inherit; transition: transform .15s, border-color .15s; }
     .card:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .card h2 { margin: 0 0 .5rem; font-size: 1.15rem; color: var(--accent); }
-    .card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.45; }
+    .card h2 { margin: 0 0 .5rem; font-size: 1.05rem; color: var(--accent); }
+    .card p { margin: 0; color: var(--muted); font-size: .85rem; line-height: 1.45; }
     a.back { color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
     a.back:hover { color: var(--accent); }
+    .count { color: var(--muted); font-size: .9rem; margin-bottom: 1.5rem; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <a class="back" href="../">← Showcase</a>
     <h1>First Dev Projects</h1>
-    <p class="sub">Kumpulan proyek belajar vibecoding: vanilla JavaScript, integrasi API, dan full-stack Express + SQLite.</p>
+    <p class="sub">Kumpulan 20 proyek belajar vibecoding: dari halaman statis, aplikasi browser, integrasi API, full-stack Express + SQLite, PWA offline-first, game arcade Canvas, visualisasi audio, analisis CSV, Kanban, editor gambar/diagram, simulator trading, hingga visualisasi repositori GitHub.</p>
+    <p class="count">Total: 20 proyek. Klik salah satu untuk membukanya.</p>
     <div class="grid">
       <a class="card" href="./proyek-01-halo/">
-        <h2>Proyek 1 — Halo</h2>
-        <p>Pengenalan DOM dan event dasar.</p>
+        <h2>01. Halo, Vibecoding!</h2>
+        <p>Halaman web sederhana dengan HTML, CSS, dan JavaScript</p>
       </a>
       <a class="card" href="./proyek-02-taskflow/">
-        <h2>Proyek 2 — Taskflow</h2>
-        <p>Aplikasi to-do list dengan localStorage.</p>
+        <h2>02. TaskFlow</h2>
+        <p>Aplikasi pengelolaan tugas</p>
       </a>
       <a class="card" href="./proyek-03-expense-tracker/">
-        <h2>Proyek 3 — Expense Tracker</h2>
-        <p>Pencatatan pengeluaran dengan chart sederhana.</p>
+        <h2>03. Expense Tracker</h2>
+        <p>Pelacakan pengeluaran</p>
       </a>
       <a class="card" href="./proyek-04-weather-dashboard/">
-        <h2>Proyek 4 — Weather Dashboard</h2>
-        <p>Dashboard cuaca dengan integrasi API (Open-Meteo).</p>
+        <h2>04. Weather Dashboard (Cuaca Kita)</h2>
+        <p>Dashboard cuaca menggunakan Open-Meteo</p>
+      </a>
+      <a class="card" href="./proyek-05-movie-explorer/">
+        <h2>05. Movie Explorer</h2>
+        <p>Eksplorasi film menggunakan TMDB</p>
+      </a>
+      <a class="card" href="./proyek-06-kanban-board/">
+        <h2>06. Kanban Board</h2>
+        <p>Papan tugas Kanban</p>
+      </a>
+      <a class="card" href="./proyek-07-habit-tracker/">
+        <h2>07. Ritme — Habit Tracker</h2>
+        <p>Pelacakan kebiasaan</p>
+      </a>
+      <a class="card" href="./proyek-08-personal-finance/">
+        <h2>08. Neraca — Personal Finance Dashboard</h2>
+        <p>Dashboard keuangan pribadi</p>
+      </a>
+      <a class="card" href="./proyek-09-taskflow-api/">
+        <h2>09. TaskFlow API</h2>
+        <p>REST API menggunakan Node.js, Express, dan SQLite</p>
+      </a>
+      <a class="card" href="./proyek-10-pocket-notes/">
+        <h2>10. Pocket Notes — PWA Catatan Pribadi</h2>
+        <p>Aplikasi catatan offline-first menggunakan IndexedDB, Service Worker, dan Web App Manifest</p>
+      </a>
+      <a class="card" href="./proyek-11-astro-dodge/">
+        <h2>11. Astro Dodge</h2>
+        <p>Game arcade 2D dengan HTML5 Canvas, game loop, kontrol keyboard dan sentuh, collision detection, serta sistem skor</p>
+      </a>
+      <a class="card" href="./proyek-12-soundwave-studio/">
+        <h2>12. Soundwave Studio — Real-Time Audio Visualizer</h2>
+        <p>Pemutar audio lokal dan visualisasi real-time menggunakan Web Audio API, AnalyserNode, dan Canvas</p>
+      </a>
+      <a class="card" href="./proyek-13-datalens-csv-analyzer/">
+        <h2>13. DataLens: CSV Data Explorer</h2>
+        <p>Impor dan analisis CSV lokal dengan vanilla JavaScript/HTML/CSS: statistik, tabel, grafik SVG, ekspor hasil pencarian, validasi, aksesibilitas, dan mitigasi formula best-effort</p>
+      </a>
+      <a class="card" href="./proyek-14-flowboard-kanban/">
+        <h2>14. Flowboard: Kanban Task Manager</h2>
+        <p>Aplikasi Kanban empat kolom dengan CRUD tugas, prioritas, tag, tenggat, drag-and-drop dan pengurutan kartu, pencarian/filter, undo/redo dengan batas 50 aksi, penyimpanan lokal berversi, serta impor/ekspor JSON</p>
+      </a>
+      <a class="card" href="./proyek-15-pixelforge-image-studio/">
+        <h2>15. PixelForge: Local Image Studio</h2>
+        <p>Editor gambar lokal dengan Canvas: import PNG/JPEG/WebP, filter, rotasi/flip, undo/redo, Before/After, validasi file/dimensi/piksel, dan ekspor PNG/JPEG</p>
+      </a>
+      <a class="card" href="./proyek-16-diagramforge-visual-diagram-builder/">
+        <h2>16. DiagramForge: Visual Diagram Builder</h2>
+        <p>Editor diagram flowchart berbasis SVG: node, konektor, drag, undo/redo, zoom/pan, autosave, dan ekspor SVG/PNG/JSON</p>
+      </a>
+      <a class="card" href="./proyek-17-tradelab-stock-trading-simulator/">
+        <h2>17. TradeLab: Stock Trading Simulator</h2>
+        <p>Dashboard simulasi trading saham berbasis browser: data harga sintetis deterministik, pencarian dan filter sektor, detail saham, grafik 30 hari, beli/jual, portofolio, riwayat transaksi, watchlist, dan autosave</p>
+      </a>
+      <a class="card" href="./proyek-18-devpanel-api-workbench/">
+        <h2>18. DevPanel API Workbench</h2>
+        <p>Alat developer browser untuk membangun dan memvalidasi request HTTP: validasi method/URL/timeout/query/header/body, HTTP client Fetch, history, collections, import/export JSON, dan UI dark workspace</p>
+      </a>
+      <a class="card" href="./proyek-19-loglens-log-file-analyzer/">
+        <h2>19. LogLens: Local Log File Analyzer</h2>
+        <p>Pembaca dan analyzer log lokal: streaming, pencarian, filter level/waktu, statistik, pagination, ekspor `.log`, serta hardening Unicode, ekspor, timestamp, dan UX</p>
+      </a>
+      <a class="card" href="./proyek-20-gitscope-git-repository-visualizer/">
+        <h2>20. GitScope: Git Repository Visualizer</h2>
+        <p>Aplikasi visualisasi repositori GitHub publik berbasis HTML, CSS, JavaScript ES Modules, dan GitHub REST API: metadata, branch, commit history, commit graph, branch comparison, dan diff</p>
       </a>
     </div>
   </div>
