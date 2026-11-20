@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Showcase — Aplikasi Pribadi</title>
+  <style>
+    :root { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#f59e0b; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; }
+    .wrap { max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 2rem; margin: 0 0 .5rem; }
+    p.sub { color: var(--muted); margin: 0 0 2rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card { background: var(--card); border: 1px solid #334155; border-radius: 12px; padding: 1.25rem; text-decoration: none; color: inherit; transition: transform .15s, border-color .15s; }
+    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .card h2 { margin: 0 0 .5rem; font-size: 1.15rem; color: var(--accent); }
+    .card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.45; }
+    .tag { display: inline-block; font-size: .75rem; background: #334155; color: var(--muted); padding: .2rem .5rem; border-radius: 999px; margin-top: .75rem; }
+    footer { margin-top: 3rem; color: var(--muted); font-size: .8rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Showcase</h1>
+    <p class="sub">Kumpulan aplikasi pribadi yang di-build dan di-deploy ke GitHub Pages. Sumber kode-nya tetap privat.</p>
+    <div class="grid">
+      <a class="card" href="./monorepo/">
+        <h2>Monorepo</h2>
+        <p>Perencana monorepo GitHub: identitas, katalog proyek, logbook belajar, dan generator README + skrip scaffolding.</p>
+        <span class="tag">React · Vite · TypeScript</span>
+      </a>
+      <a class="card" href="./repoforge/">
+        <h2>RepoForge</h2>
+        <p>Workbench untuk menemukan ide repo, merancang struktur folder otomatis, dan menghasilkan README + skrip inisialisasi.</p>
+        <span class="tag">React · Vite · TypeScript</span>
+      </a>
+      <a class="card" href="./gitcraft/">
+        <h2>GitCraft</h2>
+        <p>Arsitek repositori: blueprint 2 minggu Full-Stack &amp; SaaS, pohon folder, dan generator README produksi.</p>
+        <span class="tag">React · Vite · TypeScript</span>
+      </a>
+      <a class="card" href="./first-dev-projects/">
+        <h2>First Dev Projects</h2>
+        <p>Kumpulan proyek belajar vibecoding: vanilla JS, integrasi API, dan full-stack Express + SQLite.</p>
+        <span class="tag">HTML · CSS · JS</span>
+      </a>
+    </div>
+    <footer>Build otomatis dari repo privat. Setiap push ke repo sumber memicu rebuild.</footer>
+  </div>
+</body>
+</html>

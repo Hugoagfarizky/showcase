@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' http: https:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>DevPanel API Workbench</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navigasi utama">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">DP</span>
+        <div>
+          <strong>DevPanel</strong>
+          <span>API Workbench</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button type="button" id="tab-request" class="tab-button is-active" data-view="request" aria-selected="true">Request</button>
+        <button type="button" id="tab-history" class="tab-button" data-view="history" aria-selected="false">History</button>
+        <button type="button" id="tab-collections" class="tab-button" data-view="collections" aria-selected="false">Collections</button>
+      </nav>
+
+      <p class="sidebar-note">Local only. Tidak ada backend, telemetri, atau penyimpanan cloud.</p>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <h1 id="view-title">Request Console</h1>
+          <p id="view-description" class="view-description">Kirim, inspeksi, dan debug request API secara lokal.</p>
+          <p id="app-status" class="app-status" role="status" aria-live="polite">Siap. Tekan Send untuk mengirim request.</p>
+        </div>
+      </header>
+
+      <section id="view-request" class="view is-active">
+        <div class="request-layout">
+          <section class="request-panel" aria-labelledby="request-title">
+            <h2 id="request-title" class="sr-only">Request</h2>
+            <form id="request-form" class="request-form">
+              <div class="request-bar">
+                <label class="field field-method">
+                  <span>Method</span>
+                  <select id="request-method">
+                    <option>GET</option>
+                    <option>POST</option>
+                    <option>PUT</option>
+                    <option>PATCH</option>
+                    <option>DELETE</option>
+                  </select>
+                </label>
+
+                <label class="field field-url">
+                  <span>URL</span>
+                  <input id="request-url" type="url" placeholder="https://example.com/api" autocomplete="off" spellcheck="false">
+                </label>
+
+                <label class="field field-timeout">
+                  <span>Timeout (ms)</span>
+                  <input id="request-timeout" type="number" min="1" step="1" value="10000">
+                </label>
+
+                <div class="request-actions">
+                  <button type="button" id="send-button" class="button button-primary">Send</button>
+                  <button type="button" id="cancel-button" class="button button-secondary">Cancel</button>
+                </div>
+              </div>
+
+              <div class="section-tabs" role="tablist" aria-label="Bagian request">
+                <button type="button" class="section-tab is-active" data-section="params" aria-selected="true">Params</button>
+                <button type="button" class="section-tab" data-section="headers" aria-selected="false">Headers</button>
+                <button type="button" class="section-tab" data-section="body" aria-selected="false">Body</button>
+              </div>
+
+              <div class="section-panel" data-section-panel="params">
+                <div class="section-toolbar">
+                  <h3>Query parameters</h3>
+                  <button type="button" id="add-query" class="button button-ghost">Tambah</button>
+                </div>
+                <div class="table-wrap">
+                  <table id="query-table"><tbody id="query-body"></tbody></table>
+                </div>
+              </div>
+
+              <div class="section-panel" data-section-panel="headers" hidden>
+                <div class="section-toolbar">
+                  <h3>Headers</h3>
+                  <button type="button" id="add-header" class="button button-ghost">Tambah</button>
+                </div>
+                <div class="table-wrap">
+                  <table id="header-table"><tbody id="header-body"></tbody></table>
+                </div>
+              </div>
+
+              <div class="section-panel" data-section-panel="body" hidden>
+                <div class="section-toolbar">
+                  <h3>JSON body</h3>
+                </div>
+                <textarea id="request-body" rows="10" placeholder='{"key":"value"}' spellcheck="false"></textarea>
+              </div>
+
+              <p id="validation-message" class="message" role="status" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <section class="response-panel" aria-labelledby="response-title">
+            <div class="panel-header">
+              <h2 id="response-title">Response</h2>
+              <span id="response-state" class="response-state">Idle</span>
+            </div>
+            <div id="response-container" class="response-container"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="view-history" class="view" hidden>
+        <div class="view-header">
+          <h2>History</h2>
+          <button type="button" id="clear-history" class="button button-secondary">Hapus semua history</button>
+        </div>
+        <div id="history-container" class="list-container"></div>
+      </section>
+
+      <section id="view-collections" class="view" hidden>
+        <div class="view-header">
+          <h2>Collections</h2>
+        </div>
+        <div class="collection-actions">
+          <input id="collection-name" type="text" placeholder="Nama collection">
+          <button type="button" id="save-collection" class="button button-secondary">Simpan collection</button>
+          <button type="button" id="export-collections" class="button button-secondary">Export JSON</button>
+          <input id="import-collections" type="file" accept="application/json">
+        </div>
+        <div id="collection-container" class="list-container"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

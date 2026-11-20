@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>First Dev Projects</title>
+  <style>
+    :root { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#f59e0b; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; }
+    .wrap { max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 2rem; margin: 0 0 .5rem; }
+    p.sub { color: var(--muted); margin: 0 0 2rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card { background: var(--card); border: 1px solid #334155; border-radius: 12px; padding: 1.25rem; text-decoration: none; color: inherit; transition: transform .15s, border-color .15s; }
+    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .card h2 { margin: 0 0 .5rem; font-size: 1.15rem; color: var(--accent); }
+    .card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.45; }
+    a.back { color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
+    a.back:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../">← Showcase</a>
+    <h1>First Dev Projects</h1>
+    <p class="sub">Kumpulan proyek belajar vibecoding: vanilla JavaScript, integrasi API, dan full-stack Express + SQLite.</p>
+    <div class="grid">
+      <a class="card" href="./proyek-01-halo/">
+        <h2>Proyek 1 — Halo</h2>
+        <p>Pengenalan DOM dan event dasar.</p>
+      </a>
+      <a class="card" href="./proyek-02-taskflow/">
+        <h2>Proyek 2 — Taskflow</h2>
+        <p>Aplikasi to-do list dengan localStorage.</p>
+      </a>
+      <a class="card" href="./proyek-03-expense-tracker/">
+        <h2>Proyek 3 — Expense Tracker</h2>
+        <p>Pencatatan pengeluaran dengan chart sederhana.</p>
+      </a>
+      <a class="card" href="./proyek-04-weather-dashboard/">
+        <h2>Proyek 4 — Weather Dashboard</h2>
+        <p>Dashboard cuaca dengan integrasi API (Open-Meteo).</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
