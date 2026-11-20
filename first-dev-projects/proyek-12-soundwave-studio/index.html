@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#05060d" />
     <meta
       name="description"
-      content="Soundwave Studio adalah pemutar audio lokal dengan visualisasi spektrum dan waveform real-time menggunakan Web Audio API dan Canvas."
+      content="Soundwave Studio is a local audio player with real-time spectrum and waveform visualization using the Web Audio API and Canvas."
     />
-    <title>Soundwave Studio — Visualizer Audio Lokal</title>
+    <title>Soundwave Studio — Local Audio Visualizer</title>
     <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,11 +16,11 @@
     <div class="page">
       <header class="page__header">
         <div>
-          <p class="eyebrow">Proyek 12 · Audio Lab</p>
+          <p class="eyebrow">Project 12 · Audio Lab</p>
           <h1>Soundwave Studio</h1>
           <p class="lede">
-            Pemutar audio lokal dengan ruang visualisasi real-time. Pilih file dari perangkat,
-            lalu lihat spektrum frekuensi atau bentuk gelombangnya bergerak mengikuti suara.
+            Local audio player with real-time visualization. Pick a file from your
+            device, then watch the frequency spectrum or waveform move with the sound.
           </p>
         </div>
         <div class="brand-mark" aria-hidden="true">
@@ -33,16 +33,16 @@
       </header>
 
       <main class="studio" aria-labelledby="studio-title">
-        <h2 class="visually-hidden" id="studio-title">Pemutar audio dan visualizer</h2>
+        <h2 class="visually-hidden" id="studio-title">Audio player and visualizer</h2>
 
         <section class="visualizer" aria-labelledby="visualizer-title">
           <div class="visualizer__header">
             <div>
               <p class="eyebrow">Real-time analyser</p>
-              <h2 id="visualizer-title">Ruang frekuensi</h2>
+              <h2 id="visualizer-title">Frequency space</h2>
             </div>
 
-            <div class="mode-switch" role="group" aria-label="Mode visualisasi">
+            <div class="mode-switch" role="group" aria-label="Visualization mode">
               <button
                 class="mode-button"
                 id="mode-spectrum"
@@ -68,14 +68,14 @@
             <canvas
               id="visualizer-canvas"
               role="img"
-              aria-label="Visualisasi spektrum frekuensi audio real-time"
+              aria-label="Real-time audio frequency spectrum visualization"
             >
-              Browser Anda tidak mendukung elemen Canvas.
+              Your browser does not support the Canvas element.
             </canvas>
 
             <p class="stage-badge" id="visualizer-state" data-state="empty">
               <span class="stage-badge__dot" aria-hidden="true"></span>
-              <span id="visualizer-state-text">Menunggu audio</span>
+              <span id="visualizer-state-text">Waiting for audio</span>
             </p>
 
             <div class="stage-message" id="stage-message">
@@ -89,14 +89,14 @@
                   />
                 </svg>
               </span>
-              <p id="stage-message-text">Pilih file audio lokal untuk mulai.</p>
+              <p id="stage-message-text">Pick a local audio file to start.</p>
             </div>
           </div>
 
-          <div class="levels" aria-label="Energi frekuensi relatif">
+          <div class="levels" aria-label="Relative frequency energy">
             <div class="level" data-band="low">
               <div class="level__top">
-                <span class="level__label">Rendah</span>
+                <span class="level__label">Low</span>
                 <span class="level__value" id="level-low">—</span>
               </div>
               <div class="level__track" aria-hidden="true">
@@ -107,7 +107,7 @@
 
             <div class="level" data-band="mid">
               <div class="level__top">
-                <span class="level__label">Menengah</span>
+                <span class="level__label">Mid</span>
                 <span class="level__value" id="level-mid">—</span>
               </div>
               <div class="level__track" aria-hidden="true">
@@ -118,7 +118,7 @@
 
             <div class="level" data-band="high">
               <div class="level__top">
-                <span class="level__label">Tinggi</span>
+                <span class="level__label">High</span>
                 <span class="level__value" id="level-high">—</span>
               </div>
               <div class="level__track" aria-hidden="true">
@@ -129,19 +129,19 @@
           </div>
 
           <p class="visualizer__note">
-            Indikator energi adalah rata-rata magnitudo FFT relatif per rentang frekuensi. Ini
-            bukan pengukuran ilmiah atau equalizer profesional.
+            Energy indicators are relative FFT magnitude averages per frequency band. Not a
+            scientific measurement or professional equalizer.
           </p>
         </section>
 
         <section class="player" aria-labelledby="player-title">
-          <h2 class="visually-hidden" id="player-title">Kontrol pemutar audio</h2>
+          <h2 class="visually-hidden" id="player-title">Audio player controls</h2>
 
           <div class="file-row">
             <div class="file-info">
-              <p class="file-info__label">File aktif</p>
-              <p class="file-info__name" id="file-name">Belum ada file</p>
-              <p class="file-info__meta" id="file-meta">Pilih file audio dari perangkat ini</p>
+              <p class="file-info__label">Active file</p>
+              <p class="file-info__name" id="file-name">No file yet</p>
+              <p class="file-info__meta" id="file-meta">Pick an audio file from this device</p>
             </div>
 
             <div class="file-actions">
@@ -155,7 +155,7 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-                <span id="choose-label">Pilih audio</span>
+                <span id="choose-label">Choose audio</span>
               </button>
               <input
                 class="visually-hidden"
@@ -171,7 +171,7 @@
           <div class="status-row">
             <p class="status-pill" id="status-pill" data-state="empty">
               <span class="status-pill__dot" aria-hidden="true"></span>
-              <span id="status-text">Belum ada audio</span>
+              <span id="status-text">No audio yet</span>
             </p>
             <p class="privacy-note">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
@@ -182,7 +182,7 @@
                   stroke-linecap="round"
                 />
               </svg>
-              Diproses lokal, tidak diunggah.
+              Processed locally, not uploaded.
             </p>
           </div>
 
@@ -193,7 +193,7 @@
               class="play-button"
               id="play-button"
               type="button"
-              aria-label="Putar audio"
+              aria-label="Play audio"
               disabled
             >
               <span class="play-button__icon" aria-hidden="true">
@@ -204,7 +204,7 @@
                   <path d="M8 5h3v14H8V5Zm5 0h3v14h-3V5Z" fill="currentColor" />
                 </svg>
               </span>
-              <span id="play-label">Putar</span>
+              <span id="play-label">Play</span>
             </button>
 
             <div class="timeline">
@@ -220,8 +220,8 @@
                 max="1000"
                 step="1"
                 value="0"
-                aria-label="Posisi pemutaran"
-                aria-valuetext="0:00 dari 0:00"
+                aria-label="Playback position"
+                aria-valuetext="0:00 of 0:00"
                 disabled
               />
             </div>
@@ -233,7 +233,7 @@
                 class="icon-button"
                 id="mute-button"
                 type="button"
-                aria-label="Bisukan audio"
+                aria-label="Mute audio"
                 aria-pressed="false"
               >
                 <svg class="icon-volume" viewBox="0 0 24 24" width="20" height="20" fill="none">
@@ -264,13 +264,13 @@
                 max="1"
                 step="0.01"
                 value="0.8"
-                aria-label="Volume audio"
+                aria-label="Audio volume"
                 aria-valuetext="80%"
               />
               <span class="volume__value" id="volume-value">80%</span>
             </div>
 
-            <p class="keyboard-hint">Spasi memutar atau menjeda saat fokus tidak berada di kontrol.</p>
+            <p class="keyboard-hint">Space plays or pauses when focus is not on a control.</p>
           </div>
         </section>
 
@@ -278,14 +278,14 @@
 
         <noscript>
           <p class="noscript">
-            Soundwave Studio memerlukan JavaScript untuk memutar dan memvisualisasikan audio.
-            Aktifkan JavaScript lalu muat ulang halaman.
+            Soundwave Studio requires JavaScript to play and visualize audio. Enable
+            JavaScript and reload the page.
           </p>
         </noscript>
       </main>
 
       <footer class="page__footer">
-        <p>HTML5 Audio, Web Audio API, dan Canvas 2D. Tanpa framework atau aset eksternal.</p>
+        <p>HTML5 Audio, Web Audio API, and Canvas 2D. No framework or external assets.</p>
       </footer>
     </div>
 
