@@ -3,50 +3,314 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Showcase — Personal Apps</title>
+  <title>Showcase — Personal Apps & Projects</title>
+  <meta name="description" content="Showcase of personal apps and learning projects: interactive monorepo planner, repository architect, repository visualizer, and 20 vibecoding mini-projects." />
   <style>
-    :root { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#f59e0b; }
+    :root {
+      --bg:#0b1220; --bg2:#111a2e; --card:#162033; --card2:#1c2942;
+      --text:#e6edf7; --muted:#94a3b8; --accent:#f59e0b; --accent2:#38bdf8;
+      --border:#24324d; --ok:#22c55e;
+    }
     * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; }
-    .wrap { max-width: 960px; margin: 0 auto; }
-    h1 { font-size: 2rem; margin: 0 0 .5rem; }
-    p.sub { color: var(--muted); margin: 0 0 2rem; }
-    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .card { background: var(--card); border: 1px solid #334155; border-radius: 12px; padding: 1.25rem; text-decoration: none; color: inherit; transition: transform .15s, border-color .15s; }
-    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .card h2 { margin: 0 0 .5rem; font-size: 1.15rem; color: var(--accent); }
-    .card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.45; }
-    .tag { display: inline-block; font-size: .75rem; background: #334155; color: var(--muted); padding: .2rem .5rem; border-radius: 999px; margin-top: .75rem; }
-    footer { margin-top: 3rem; color: var(--muted); font-size: .8rem; text-align: center; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.6; }
+    a { color: inherit; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* Header */
+    header.hero { padding: 4rem 0 2.5rem; background: linear-gradient(180deg, #0f1a30 0%, var(--bg) 100%); border-bottom: 1px solid var(--border); }
+    .hero-inner { display: grid; gap: 1.5rem; }
+    .eyebrow { display: inline-block; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: .5rem; }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .75rem; line-height: 1.1; }
+    .hero-lead { color: var(--muted); font-size: 1.05rem; max-width: 720px; margin: 0 0 1.5rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .btn { display: inline-flex; align-items: center; gap: .4rem; padding: .6rem 1.1rem; border-radius: 8px; font-weight: 600; font-size: .9rem; text-decoration: none; border: 1px solid var(--border); background: var(--card); color: var(--text); transition: all .15s; }
+    .btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    .btn.primary { background: var(--accent); color: #1a1200; border-color: var(--accent); }
+    .btn.primary:hover { background: #fbbf24; color: #1a1200; }
+    .btn.ghost { background: transparent; }
+
+    /* Stats */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 2.5rem 0; }
+    .stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
+    .stat .num { font-size: 1.9rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .stat .lbl { color: var(--muted); font-size: .8rem; margin-top: .35rem; }
+
+    /* Section */
+    section.block { padding: 2.5rem 0; border-top: 1px solid var(--border); }
+    section.block:first-of-type { border-top: none; }
+    .block-head { margin-bottom: 1.5rem; }
+    .block-head h2 { font-size: 1.5rem; margin: 0 0 .35rem; }
+    .block-head p { color: var(--muted); margin: 0; max-width: 760px; }
+
+    /* Project card (detailed) */
+    .project { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.25rem; transition: border-color .15s; }
+    .project:hover { border-color: var(--accent); }
+    .project-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem 1rem; margin-bottom: .75rem; }
+    .project-head h3 { margin: 0; font-size: 1.35rem; color: var(--accent); }
+    .project-head .live { font-size: .8rem; color: var(--ok); font-weight: 600; }
+    .project p.desc { color: var(--muted); margin: 0 0 1rem; }
+    .project .features { margin: 0 0 1rem; padding-left: 1.1rem; color: var(--text); font-size: .92rem; }
+    .project .features li { margin-bottom: .25rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .chip { font-size: .72rem; background: #24324d; color: var(--muted); padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--border); }
+    .project-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+    /* Featured mini projects */
+    .mini-grid { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .mini { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: .85rem 1rem; text-decoration: none; transition: border-color .15s; }
+    .mini:hover { border-color: var(--accent2); }
+    .mini .num { font-size: .7rem; color: var(--accent2); font-weight: 700; }
+    .mini .name { font-weight: 600; font-size: .95rem; margin: .15rem 0; }
+    .mini .focus { color: var(--muted); font-size: .8rem; line-height: 1.35; }
+
+    /* Footer */
+    footer.site { padding: 2.5rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; text-align: center; }
+    footer.site a { color: var(--accent); text-decoration: none; }
+    footer.site a:hover { text-decoration: underline; }
+    .note { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; color: var(--muted); font-size: .88rem; margin-top: 1.5rem; }
+
+    @media (max-width: 640px) {
+      header.hero { padding: 2.5rem 0 1.5rem; }
+      .project { padding: 1.1rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Showcase</h1>
-    <p class="sub">Collection of personal apps built and deployed to GitHub Pages. Source code stays private.</p>
-    <div class="grid">
-      <a class="card" href="./monorepo/">
-        <h2>Monorepo</h2>
-        <p>Interactive GitHub monorepo planner: identity, project catalog, learning logbook, and README + scaffolding script generator.</p>
-        <span class="tag">React · Vite · TypeScript</span>
-      </a>
-      <a class="card" href="./repoforge/">
-        <h2>RepoForge</h2>
-        <p>Workbench to discover repo ideas, auto-design folder structure, and generate README + init scripts.</p>
-        <span class="tag">React · Vite · TypeScript</span>
-      </a>
-      <a class="card" href="./gitcraft/">
-        <h2>GitCraft</h2>
-        <p>Repository architect: 2-week Full-Stack &amp; SaaS blueprint, folder tree, and production README generator.</p>
-        <span class="tag">React · Vite · TypeScript</span>
-      </a>
-      <a class="card" href="./first-dev-projects/">
-        <h2>First Dev Projects</h2>
-        <p>Collection of 20 vibecoding projects: from static pages, browser apps, API integration, full-stack Express + SQLite, PWA offline-first, Canvas arcade game, audio visualizer, CSV analyzer, Kanban, image/diagram editors, trading simulator, to GitHub repo visualizer.</p>
-        <span class="tag">HTML · CSS · JS</span>
-      </a>
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Personal Showcase</span>
+      <h1>Apps &amp; Projects</h1>
+      <p class="hero-lead">
+        A collection of personal applications and learning projects, built with
+        React, Vite, Flutter, and vanilla JavaScript. Source code stays private;
+        the builds below are deployed to GitHub Pages.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#monorepo">Monorepo</a>
+        <a class="btn" href="#repoforge">RepoForge</a>
+        <a class="btn" href="#gitcraft">GitCraft</a>
+        <a class="btn" href="#first-dev">First Dev Projects</a>
+      </div>
     </div>
-    <footer>Builds auto-update on every push to the source repos.</footer>
-  </div>
+  </header>
+
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="num">4</div><div class="lbl">Deployed apps</div></div>
+      <div class="stat"><div class="num">20</div><div class="lbl">Mini-projects</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">Client-side</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Backend / DB</div></div>
+    </div>
+
+    <!-- Monorepo -->
+    <section class="block" id="monorepo">
+      <div class="block-head">
+        <span class="eyebrow">App 01</span>
+        <h2>Monorepo</h2>
+        <p>Interactive GitHub monorepo planner for developers building a portfolio step by step.</p>
+      </div>
+      <div class="project">
+        <div class="project-head">
+          <h3>Monorepo</h3>
+          <span class="live">● Live</span>
+        </div>
+        <p class="desc">
+          Plan a monorepo identity, maintain a project catalog from Beginner to Advanced with
+          preset stacks, keep a daily learning logbook, and export a production-ready
+          <code>README.md</code> plus a bash scaffolding script. Everything runs in the browser;
+          state is stored locally.
+        </p>
+        <ul class="features">
+          <li>Identity section: owner/org name, tagline, description.</li>
+          <li>Project catalog with preset stacks (Beginner → Advanced).</li>
+          <li>Daily learning logbook that is included in the export.</li>
+          <li>README + bash scaffolding generator.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">React 19</span><span class="chip">Vite 8</span>
+          <span class="chip">TypeScript</span><span class="chip">Tailwind CSS v4</span>
+          <span class="chip">motion</span><span class="chip">Lucide</span>
+        </div>
+        <div class="project-actions">
+          <a class="btn primary" href="./monorepo/">Open demo →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RepoForge -->
+    <section class="block" id="repoforge">
+      <div class="block-head">
+        <span class="eyebrow">App 02</span>
+        <h2>RepoForge</h2>
+        <p>Workbench to discover experimental GitHub repo ideas and scaffold them automatically.</p>
+      </div>
+      <div class="project">
+        <div class="project-head">
+          <h3>RepoForge</h3>
+          <span class="live">● Live</span>
+        </div>
+        <p class="desc">
+          Find experimental repository ideas, auto-design a folder structure, and generate a
+          ready-to-use <code>README.md</code> together with a project init script. Includes a
+          folder architect panel, README studio, manifest import, and export starter modal.
+        </p>
+        <ul class="features">
+          <li>Repo idea catalog with filters.</li>
+          <li>Automatic folder architecture panel.</li>
+          <li>README studio with live preview.</li>
+          <li>Manifest import and export starter (zip).</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">React 19</span><span class="chip">Vite 8</span>
+          <span class="chip">TypeScript</span><span class="chip">Tailwind CSS v4</span>
+          <span class="chip">motion</span><span class="chip">Lucide</span>
+        </div>
+        <div class="project-actions">
+          <a class="btn primary" href="./repoforge/">Open demo →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitCraft -->
+    <section class="block" id="gitcraft">
+      <div class="block-head">
+        <span class="eyebrow">App 03</span>
+        <h2>GitCraft</h2>
+        <p>Interactive GitHub repository architect and 2-week Full-Stack &amp; SaaS blueprint launchpad.</p>
+      </div>
+      <div class="project">
+        <div class="project-head">
+          <h3>GitCraft</h3>
+          <span class="live">● Live</span>
+        </div>
+        <p class="desc">
+          Design a repository structure, follow a 2-week Full-Stack &amp; SaaS sprint blueprint,
+          and export a production-grade <code>README</code> with folder trees and sprint roadmaps.
+          Optional AI assistance via an Express server with Gemini.
+        </p>
+        <ul class="features">
+          <li>Repository architect with folder tree preview.</li>
+          <li>2-week Full-Stack &amp; SaaS sprint blueprints.</li>
+          <li>Production README generator.</li>
+          <li>Optional AI help (Gemini, requires API key).</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">React 19</span><span class="chip">Vite 8</span>
+          <span class="chip">TypeScript</span><span class="chip">Tailwind CSS v4</span>
+          <span class="chip">Express</span><span class="chip">Gemini AI</span>
+        </div>
+        <div class="project-actions">
+          <a class="btn primary" href="./gitcraft/">Open demo →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- First Dev Projects -->
+    <section class="block" id="first-dev">
+      <div class="block-head">
+        <span class="eyebrow">20 Mini-Projects</span>
+        <h2>First Dev Projects</h2>
+        <p>A collection of 20 vibecoding learning projects, progressing from static pages to full-stack apps.</p>
+      </div>
+      <div class="project">
+        <div class="project-head">
+          <h3>First Dev Projects</h3>
+          <span class="live">● Live</span>
+        </div>
+        <p class="desc">
+          20 small projects documenting a vibecoding learning journey: from plain HTML/CSS/JS,
+          through API integration, full-stack Express + SQLite, PWA offline-first, Canvas arcade
+          games, audio visualization, CSV analysis, Kanban, image/diagram editors, trading
+          simulator, and a GitHub repository visualizer.
+        </p>
+        <ul class="features">
+          <li>Project 01–04: static pages and basic apps.</li>
+          <li>Project 05–08: API integration and dashboards.</li>
+          <li>Project 09: full-stack Express + SQLite REST API.</li>
+          <li>Project 10: PWA offline-first notes (IndexedDB + Service Worker).</li>
+          <li>Project 11–12: Canvas arcade game and audio visualizer.</li>
+          <li>Project 13–20: CSV analyzer, Kanban, image/diagram editors, trading simulator, log analyzer, GitHub visualizer.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+          <span class="chip">ES Modules</span><span class="chip">Express</span><span class="chip">SQLite</span>
+          <span class="chip">Canvas API</span><span class="chip">Web Audio API</span>
+        </div>
+        <div class="project-actions">
+          <a class="btn primary" href="./first-dev-projects/">Browse all 20 →</a>
+        </div>
+
+        <div class="note">
+          Featured mini-projects:
+        </div>
+        <div class="mini-grid" style="margin-top: .75rem;">
+          <a class="mini" href="./first-dev-projects/proyek-05-movie-explorer/">
+            <div class="num">Project 05</div><div class="name">Movie Explorer</div>
+            <div class="focus">Movie search &amp; favorites with TMDB data.</div>
+          </a>
+          <a class="mini" href="./first-dev-projects/proyek-09-taskflow-api/">
+            <div class="num">Project 09</div><div class="name">TaskFlow API</div>
+            <div class="focus">Full-stack REST API with Express + SQLite.</div>
+          </a>
+          <a class="mini" href="./first-dev-projects/proyek-10-pocket-notes/">
+            <div class="num">Project 10</div><div class="name">Pocket Notes</div>
+            <div class="focus">Offline-first PWA notes (IndexedDB + SW).</div>
+          </a>
+          <a class="mini" href="./first-dev-projects/proyek-11-astro-dodge/">
+            <div class="num">Project 11</div><div class="name">Astro Dodge</div>
+            <div class="focus">Canvas arcade survival game.</div>
+          </a>
+          <a class="mini" href="./first-dev-projects/proyek-14-flowboard-kanban/">
+            <div class="num">Project 14</div><div class="name">Flowboard Kanban</div>
+            <div class="focus">4-column Kanban with undo/redo &amp; JSON import/export.</div>
+          </a>
+          <a class="mini" href="./first-dev-projects/proyek-20-gitscope-git-repository-visualizer/">
+            <div class="num">Project 20</div><div class="name">GitScope</div>
+            <div class="focus">GitHub repo visualizer with commit graph &amp; diff.</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="about">
+      <div class="block-head">
+        <span class="eyebrow">About</span>
+        <h2>About this showcase</h2>
+        <p>What this site is and how it is built.</p>
+      </div>
+      <div class="project">
+        <p class="desc">
+          This showcase hosts the deployed builds of private repositories. The source code stays
+          private; only the compiled output is published here. Each app is a single-page or
+          multi-page static site served from a subfolder, so the URLs are stable and shareable.
+        </p>
+        <ul class="features">
+          <li>Static hosting on GitHub Pages (no backend, no database).</li>
+          <li>Auto-rebuild on every push to the source repos (GitHub Actions).</li>
+          <li>Apps are framework-free or use React/Vite/Next.js static export.</li>
+          <li>All data stays in the visitor's browser (localStorage / IndexedDB).</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">GitHub Pages</span><span class="chip">GitHub Actions</span>
+          <span class="chip">React</span><span class="chip">Vite</span><span class="chip">Next.js</span>
+          <span class="chip">Flutter Web</span><span class="chip">Vanilla JS</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <p>
+        Built and maintained by <a href="https://github.com/Hugoagfarizky">Hugo Agfarizky</a>.
+        Source repositories are private; builds are published here.
+      </p>
+      <p style="margin-top:.5rem;">
+        <a href="https://github.com/Hugoagfarizky">GitHub</a> ·
+        <a href="mailto:nugrahaagfarizky@gmail.com">Email</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
