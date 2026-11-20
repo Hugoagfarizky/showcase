@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TaskFlow API — manage tasks with a vanilla JavaScript frontend, Express REST API, and SQLite database.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#0f766e">
+  <title>TaskFlow API — Task Management</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230f766e'/%3E%3Cpath d='M18 33l9 9 19-22' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-logo" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
+      <path d="M7.5 12.5l3 3 6-7"></path>
+    </symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14"></path>
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="10.5" cy="10.5" r="6.5"></circle>
+      <path d="M15.5 15.5L20 20"></path>
+    </symbol>
+    <symbol id="icon-edit" viewBox="0 0 24 24">
+      <path d="M4 20h4.5L20 8.5 15.5 4 4 15.5z"></path>
+      <path d="M13.5 6l4.5 4.5"></path>
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path d="M4.5 7h15M9 7V4.5h6V7M6.5 7l.8 12.5h9.4L17.5 7"></path>
+      <path d="M10 11v5M14 11v5"></path>
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24">
+      <path d="M6 6l12 12M18 6L6 18"></path>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="M4.5 12.5l5 5 10-11"></path>
+    </symbol>
+    <symbol id="icon-alert" viewBox="0 0 24 24">
+      <path d="M12 4l9 16H3z"></path>
+      <path d="M12 9v4.5M12 17v.5"></path>
+    </symbol>
+    <symbol id="icon-refresh" viewBox="0 0 24 24">
+      <path d="M20 8a8 8 0 1 0 .5 7"></path>
+      <path d="M20 4v4.5h-4.5"></path>
+    </symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24">
+      <rect x="4" y="5.5" width="16" height="14.5" rx="2"></rect>
+      <path d="M8 3.5v4M16 3.5v4M4 10h16"></path>
+    </symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5"></circle>
+      <path d="M12 7v5.5l3.5 2"></path>
+    </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="M19 12H5M11 18l-6-6 6-6"></path>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+      <path d="M5 12h14M13 6l6 6-6 6"></path>
+    </symbol>
+    <symbol id="icon-tasks" viewBox="0 0 24 24">
+      <path d="M9 6.5h11M9 12h11M9 17.5h11"></path>
+      <path d="M4 6.5l1 1 2-2M4 12l1 1 2-2M4 17.5l1 1 2-2"></path>
+    </symbol>
+    <symbol id="icon-loader" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5"></circle>
+      <path d="M12 3.5v5"></path>
+    </symbol>
+    <symbol id="icon-inbox" viewBox="0 0 24 24">
+      <path d="M4 13.5L7 5h10l3 8.5V19H4z"></path>
+      <path d="M4 13.5h4l1.5 3h5l1.5-3h4"></path>
+    </symbol>
+    <symbol id="icon-database" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="5.5" rx="7.5" ry="3"></ellipse>
+      <path d="M4.5 5.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"></path>
+      <path d="M4.5 11.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"></path>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="TaskFlow API, reload page">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="icon"><use href="#icon-logo"></use></svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">TaskFlow</span>
+          <span class="brand-sub">API workspace</span>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <span class="api-chip" id="api-chip" data-state="loading" role="status" aria-live="polite">
+          <span class="api-dot" aria-hidden="true"></span>
+          <span id="api-status-text">Connecting…</span>
+        </span>
+        <button class="button button-primary" id="new-task-button" type="button" aria-label="Add new task">
+          <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
+          <span>New task</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell" id="main-content" tabindex="-1">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">REST API + SQLite</p>
+        <h1 id="page-title">Work neatly, data stays saved.</h1>
+        <p class="hero-description">
+          Manage tasks from a UI connected directly to the Express API and SQLite database.
+          Every change is truly saved on the server.
+        </p>
+      </div>
+      <div class="hero-meta" aria-label="App technology">
+        <span class="meta-pill">
+          <svg class="icon" aria-hidden="true"><use href="#icon-database"></use></svg>
+          SQLite
+        </span>
+        <span class="meta-pill">
+          <svg class="icon" aria-hidden="true"><use href="#icon-tasks"></use></svg>
+          Express 5
+        </span>
+      </div>
+    </section>
+
+    <section class="summary-grid" aria-label="Task summary">
+      <article class="summary-card summary-total">
+        <div class="summary-top">
+          <span class="summary-label">Total tasks</span>
+          <span class="summary-icon" aria-hidden="true"><svg class="icon"><use href="#icon-tasks"></use></svg></span>
+        </div>
+        <strong class="summary-value" id="summary-total">—</strong>
+        <p class="summary-note">All tasks in the database</p>
+      </article>
+      <article class="summary-card summary-todo">
+        <div class="summary-top">
+          <span class="summary-label">Not started</span>
+          <span class="summary-icon" aria-hidden="true"><svg class="icon"><use href="#icon-inbox"></use></svg></span>
+        </div>
+        <strong class="summary-value" id="summary-todo">—</strong>
+        <p class="summary-note">Status todo</p>
+      </article>
+      <article class="summary-card summary-progress">
+        <div class="summary-top">
+          <span class="summary-label">In progress</span>
+          <span class="summary-icon" aria-hidden="true"><svg class="icon"><use href="#icon-loader"></use></svg></span>
+        </div>
+        <strong class="summary-value" id="summary-progress">—</strong>
+        <p class="summary-note">Currently running</p>
+      </article>
+      <article class="summary-card summary-done">
+        <div class="summary-top">
+          <span class="summary-label">Completed</span>
+          <span class="summary-icon" aria-hidden="true"><svg class="icon"><use href="#icon-check"></use></svg></span>
+        </div>
+        <strong class="summary-value" id="summary-done">—</strong>
+        <p class="summary-note">Already finished</p>
+      </article>
+    </section>
+
+    <section class="workspace" id="workspace" aria-labelledby="workspace-title">
+      <div class="workspace-head">
+        <div>
+          <p class="eyebrow">Workspace</p>
+          <h2 id="workspace-title">Task list</h2>
+          <p class="result-summary" id="result-summary" aria-live="polite">Loading tasks…</p>
+        </div>
+        <button class="text-button" id="reset-filters" type="button" hidden>
+          <svg class="icon" aria-hidden="true"><use href="#icon-refresh"></use></svg>
+          Reset filters
+        </button>
+      </div>
+
+      <form class="filters" id="filters-form" role="search" aria-label="Search and filter tasks">
+        <div class="field field-search">
+          <label for="search-input">Search title</label>
+          <div class="search-control">
+            <svg class="icon" aria-hidden="true"><use href="#icon-search"></use></svg>
+            <input id="search-input" name="q" type="search" placeholder="Example: monthly report" autocomplete="off" maxlength="100">
+          </div>
+        </div>
+        <div class="field">
+          <label for="status-filter">Status</label>
+          <select id="status-filter" name="status">
+            <option value="">All statuses</option>
+            <option value="todo">Not started</option>
+            <option value="in_progress">In progress</option>
+            <option value="done">Completed</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="priority-filter">Priority</label>
+          <select id="priority-filter" name="priority">
+            <option value="">All priorities</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sort-select">Sort</label>
+          <select id="sort-select" name="sort">
+            <option value="created_at:desc">Newest created</option>
+            <option value="created_at:asc">Oldest created</option>
+            <option value="priority:desc">Highest priority</option>
+            <option value="priority:asc">Lowest priority</option>
+            <option value="due_date:asc">Nearest deadline</option>
+            <option value="due_date:desc">Farthest deadline</option>
+          </select>
+        </div>
+      </form>
+
+      <div class="task-panel" id="task-panel">
+        <div class="state-panel loading-panel" id="loading-state" aria-live="polite">
+          <div class="loading-heading">
+            <span class="spinner" aria-hidden="true"><svg class="icon"><use href="#icon-loader"></use></svg></span>
+            <span>Loading tasks from server…</span>
+          </div>
+          <div class="skeleton-grid" aria-hidden="true">
+            <div class="skeleton-card"><span></span><span></span><span></span></div>
+            <div class="skeleton-card"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="state-panel error-panel" id="error-state" role="alert" hidden>
+          <span class="state-icon" aria-hidden="true"><svg class="icon"><use href="#icon-alert"></use></svg></span>
+          <div class="state-copy">
+            <h3>Could not load tasks</h3>
+            <p id="error-message">Server not responding. Check your connection and try again.</p>
+          </div>
+          <button class="button button-secondary" id="retry-button" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#icon-refresh"></use></svg>
+            Try again
+          </button>
+        </div>
+
+        <div class="state-panel empty-panel" id="empty-state" hidden>
+          <span class="state-icon" aria-hidden="true"><svg class="icon"><use href="#icon-inbox"></use></svg></span>
+          <div class="state-copy">
+            <h3 id="empty-title">No tasks yet</h3>
+            <p id="empty-copy">Add your first task to start organizing your work.</p>
+          </div>
+          <div class="empty-actions">
+            <button class="button button-primary" id="empty-add-button" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
+              Add task
+            </button>
+            <button class="button button-secondary" id="empty-reset-button" type="button" hidden>
+              Reset filters
+            </button>
+          </div>
+        </div>
+
+        <div class="task-grid" id="task-list" role="list" hidden></div>
+
+        <nav class="pagination" id="pagination" aria-label="Task page navigation" hidden>
+          <p class="pagination-summary" id="pagination-summary"></p>
+          <div class="pagination-controls">
+            <button class="page-button page-arrow" id="pagination-prev" type="button" aria-label="Previous page">
+              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-left"></use></svg>
+            </button>
+            <div class="page-numbers" id="page-buttons"></div>
+            <button class="page-button page-arrow" id="pagination-next" type="button" aria-label="Next page">
+              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p><strong>TaskFlow API</strong> — vanilla JavaScript frontend, Express, and SQLite.</p>
+      <p class="footer-note">Data is stored on the local server. No account, cloud sync, or authentication.</p>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="task-dialog" aria-labelledby="task-dialog-title">
+    <form class="modal-card" id="task-form" novalidate>
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow" id="task-dialog-eyebrow">New task</p>
+          <h2 id="task-dialog-title">Add task</h2>
+        </div>
+        <button class="icon-button" type="button" data-close-dialog="task-dialog" aria-label="Close task form">
+          <svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="field">
+          <label for="task-title">Title <span class="required-mark" aria-hidden="true">*</span></label>
+          <input id="task-title" name="title" type="text" maxlength="200" required autocomplete="off" aria-describedby="task-title-error">
+          <p class="field-error" id="task-title-error" data-error-for="title"></p>
+        </div>
+
+        <div class="field">
+          <label for="task-description">Description <span class="optional">(optional)</span></label>
+          <textarea id="task-description" name="description" rows="4" maxlength="2000" aria-describedby="task-description-hint task-description-error"></textarea>
+          <div class="field-meta">
+            <span id="task-description-hint">Brief context to make the task easy to continue.</span>
+            <span id="description-count">0/2000</span>
+          </div>
+          <p class="field-error" id="task-description-error" data-error-for="description"></p>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="task-status">Status</label>
+            <select id="task-status" name="status" aria-describedby="task-status-error">
+              <option value="todo">Not started</option>
+              <option value="in_progress">In progress</option>
+              <option value="done">Completed</option>
+            </select>
+            <p class="field-error" id="task-status-error" data-error-for="status"></p>
+          </div>
+          <div class="field">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" name="priority" aria-describedby="task-priority-error">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+            <p class="field-error" id="task-priority-error" data-error-for="priority"></p>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="task-due-date">Due date <span class="optional">(optional)</span></label>
+            <input id="task-due-date" name="dueDate" type="date" aria-describedby="task-due-hint task-due-error">
+            <p class="field-hint" id="task-due-hint">Leave empty if there is no deadline.</p>
+            <p class="field-error" id="task-due-error" data-error-for="dueDate"></p>
+          </div>
+          <div class="field">
+            <label for="task-category">Category <span class="optional">(optional)</span></label>
+            <input id="task-category" name="category" type="text" maxlength="40" autocomplete="off" aria-describedby="task-category-hint task-category-error">
+            <p class="field-hint" id="task-category-hint">Example: work, study, personal.</p>
+            <p class="field-error" id="task-category-error" data-error-for="category"></p>
+          </div>
+        </div>
+
+        <p class="form-error" id="task-form-error" role="alert" tabindex="-1" hidden></p>
+      </div>
+
+      <div class="dialog-footer">
+        <button class="button button-danger-quiet" id="delete-task-button" type="button" hidden>
+          <svg class="icon" aria-hidden="true"><use href="#icon-trash"></use></svg>
+          <span>Delete task</span>
+        </button>
+        <div class="dialog-footer-actions">
+          <button class="button button-secondary" type="button" data-close-dialog="task-dialog">Cancel</button>
+          <button class="button button-primary" id="submit-task-button" type="submit">Save task</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+    <div class="confirm-inner">
+      <span class="confirm-icon" aria-hidden="true">
+        <svg class="icon"><use href="#icon-alert"></use></svg>
+      </span>
+      <p class="eyebrow">Confirm</p>
+      <h2 id="confirm-title">Delete task?</h2>
+      <p id="confirm-message">This action cannot be undone. The task will be removed from the server.</p>
+      <div class="confirm-actions">
+        <button class="button button-secondary" id="confirm-cancel" type="button">Cancel</button>
+        <button class="button button-danger" id="confirm-action" type="button">Delete task</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <noscript>
+    <p class="noscript-message">TaskFlow API requires JavaScript to display and manage tasks.</p>
+  </noscript>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

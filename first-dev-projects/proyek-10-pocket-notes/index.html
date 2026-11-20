@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pocket Notes — Catatan pribadi</title>
+    <title>Pocket Notes — Personal notes</title>
     <meta
       name="description"
-      content="Pocket Notes adalah aplikasi catatan pribadi yang menyimpan data di IndexedDB dan dapat dibuka kembali secara offline melalui Service Worker."
+      content="Pocket Notes is a personal notes app that stores data in IndexedDB and can be reopened offline via Service Worker."
     />
     <meta name="theme-color" content="#2f5a48" />
     <link rel="manifest" href="manifest.webmanifest" />
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Lewati ke daftar catatan</a>
+    <a class="skip-link" href="#main">Skip to notes list</a>
 
     <div class="app-shell">
       <header class="app-header">
@@ -28,17 +28,17 @@
             aria-hidden="true"
           />
           <div class="brand__text">
-            <p class="brand__eyebrow">Catatan pribadi</p>
+            <p class="brand__eyebrow">Personal notes</p>
             <h1 class="brand__title">Pocket Notes</h1>
           </div>
         </div>
 
         <div class="app-header__actions">
           <button type="button" class="button button--quiet button--small" id="install-button" hidden>
-            Pasang aplikasi
+            Install app
           </button>
           <p class="status-pill" id="storage-status" data-state="loading" role="status">
-            Memuat catatan…
+            Loading notes…
           </p>
           <p
             class="status-pill"
@@ -47,7 +47,7 @@
             role="status"
             aria-live="polite"
           >
-            Memeriksa offline…
+            Checking offline…
           </p>
         </div>
       </header>
@@ -55,15 +55,15 @@
       <div class="banner banner--danger" id="db-banner" role="alert" hidden>
         <p id="db-banner-message"></p>
         <button type="button" class="button button--small button--quiet" id="db-retry">
-          Coba lagi
+          Try again
         </button>
       </div>
 
       <p class="visually-hidden" id="update-status" role="status" aria-live="polite"></p>
       <div class="banner banner--info" id="update-banner" hidden>
-        <p>Versi baru Pocket Notes sudah siap digunakan.</p>
+        <p>A new version of Pocket Notes is ready to use.</p>
         <button type="button" class="button button--small button--quiet" id="update-reload">
-          Muat ulang
+          Reload
         </button>
       </div>
 
@@ -71,36 +71,36 @@
         <section class="toolbar" aria-labelledby="notes-heading">
           <div class="toolbar__top">
             <div class="toolbar__heading">
-              <h2 class="section-title" id="notes-heading" tabindex="-1">Catatan</h2>
-              <p class="notes-count" id="notes-count">Memuat catatan…</p>
+              <h2 class="section-title" id="notes-heading" tabindex="-1">Notes</h2>
+              <p class="notes-count" id="notes-count">Loading notes…</p>
               <p class="visually-hidden" id="results-status" role="status" aria-live="polite"></p>
             </div>
             <button type="button" class="button button--primary" id="new-note">
-              Catatan baru
+              New note
             </button>
           </div>
 
           <div class="toolbar__controls">
             <div class="search-field">
-              <label class="visually-hidden" for="search-input">Cari catatan</label>
+              <label class="visually-hidden" for="search-input">Search notes</label>
               <input
                 class="search-field__input"
                 id="search-input"
                 type="search"
-                placeholder="Cari judul atau isi catatan"
+                placeholder="Search title or note body"
                 autocomplete="off"
                 spellcheck="false"
               />
             </div>
 
-            <div class="filter-group" role="group" aria-label="Filter catatan">
+            <div class="filter-group" role="group" aria-label="Filter notes">
               <button
                 type="button"
                 class="filter-button"
                 data-filter="all"
                 aria-pressed="true"
               >
-                Semua
+                All
               </button>
               <button
                 type="button"
@@ -108,12 +108,12 @@
                 data-filter="pinned"
                 aria-pressed="false"
               >
-                Disematkan
+                Pinned
               </button>
             </div>
           </div>
           <p class="visually-hidden" id="search-hint">
-            Hasil daftar catatan diperbarui saat pencarian atau filter diubah.
+            The notes list updates when search or filter changes.
           </p>
         </section>
 
@@ -130,8 +130,8 @@
 
       <footer class="app-footer">
         <p>
-          Catatan disimpan di browser ini melalui IndexedDB. Data tidak tersinkron ke perangkat
-          lain dan dapat hilang jika data situs dihapus.
+          Notes are stored in this browser via IndexedDB. Data is not synced to
+          other devices and may be lost if site data is cleared.
         </p>
       </footer>
     </div>
@@ -139,8 +139,8 @@
     <dialog class="dialog" id="note-dialog" aria-labelledby="note-dialog-title">
       <form class="note-form" id="note-form" novalidate>
         <div class="dialog__header">
-          <h2 class="dialog__title" id="note-dialog-title">Catatan baru</h2>
-          <button type="button" class="icon-button" id="note-close" aria-label="Tutup dialog">
+          <h2 class="dialog__title" id="note-dialog-title">New note</h2>
+          <button type="button" class="icon-button" id="note-close" aria-label="Close dialog">
             <span aria-hidden="true">×</span>
           </button>
         </div>
@@ -148,7 +148,7 @@
         <input type="hidden" id="note-id" />
 
         <div class="field">
-          <label class="field__label" for="note-title">Judul</label>
+          <label class="field__label" for="note-title">Title</label>
           <input
             class="field__input"
             id="note-title"
@@ -163,7 +163,7 @@
         </div>
 
         <div class="field">
-          <label class="field__label" for="note-body">Isi catatan</label>
+          <label class="field__label" for="note-body">Note body</label>
           <textarea
             class="field__input field__input--area"
             id="note-body"
@@ -179,9 +179,9 @@
 
         <div class="dialog__actions">
           <p class="char-count" id="note-char-count">0 / 8000</p>
-          <button type="button" class="button button--quiet" id="note-cancel">Batal</button>
+          <button type="button" class="button button--quiet" id="note-cancel">Cancel</button>
           <button type="submit" class="button button--primary" id="note-submit">
-            Simpan catatan
+            Save note
           </button>
         </div>
       </form>
@@ -193,15 +193,15 @@
       aria-labelledby="delete-title"
       aria-describedby="delete-message"
     >
-      <h2 class="dialog__title" id="delete-title">Hapus catatan?</h2>
+      <h2 class="dialog__title" id="delete-title">Delete note?</h2>
       <p class="dialog__text" id="delete-message">
-        Catatan yang dihapus tidak dapat dikembalikan.
+        Deleted notes cannot be recovered.
       </p>
       <p class="delete-note-title" id="delete-note-title"></p>
       <p class="form-error" id="delete-error" role="alert" hidden></p>
       <div class="dialog__actions">
-        <button type="button" class="button button--quiet" id="delete-cancel">Batal</button>
-        <button type="button" class="button button--danger" id="delete-confirm">Hapus</button>
+        <button type="button" class="button button--quiet" id="delete-cancel">Cancel</button>
+        <button type="button" class="button button--danger" id="delete-confirm">Delete</button>
       </div>
     </dialog>
 
