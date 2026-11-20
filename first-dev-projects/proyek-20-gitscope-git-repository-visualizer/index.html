@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,14 +49,14 @@
     </symbol>
   </svg>
 
-  <input class="sidebar-toggle" type="checkbox" id="sidebar-toggle" aria-label="Buka atau tutup navigasi samping">
-  <label class="menu-button" for="sidebar-toggle" aria-label="Buka navigasi">
+  <input class="sidebar-toggle" type="checkbox" id="sidebar-toggle" aria-label="Open or close sidebar navigation">
+  <label class="menu-button" for="sidebar-toggle" aria-label="Open navigation">
     <svg><use href="#icon-menu"></use></svg>
   </label>
   <label class="sidebar-backdrop" for="sidebar-toggle" aria-hidden="true"></label>
 
   <div class="app-shell">
-    <aside class="sidebar" aria-label="Navigasi utama">
+    <aside class="sidebar" aria-label="Main navigation">
       <div class="brand">
         <span class="brand-mark">
           <svg><use href="#icon-git"></use></svg>
@@ -68,11 +68,11 @@
       </div>
 
       <div class="sidebar-section">
-        <h2 class="sidebar-heading">Repository aktif</h2>
+        <h2 class="sidebar-heading">Active repository</h2>
         <div id="repository-summary" class="repository-summary sidebar-repository"></div>
       </div>
 
-      <nav class="sidebar-nav" aria-label="Fitur aplikasi">
+      <nav class="sidebar-nav" aria-label="App features">
         <a class="nav-item is-active" href="#overview">
           <svg><use href="#icon-overview"></use></svg>
           <span>Overview</span>
@@ -115,15 +115,15 @@
 
         <form id="repository-form" class="repository-form" novalidate>
           <label class="field field-inline">
-            <span>URL repositori GitHub</span>
+            <span>GitHub repository URL</span>
             <div class="input-with-icon">
               <svg><use href="#icon-search"></use></svg>
               <input id="repository-url" type="url" autocomplete="off" spellcheck="false" placeholder="https://github.com/owner/repo" aria-describedby="validation-message" required>
             </div>
           </label>
           <div class="actions">
-            <button type="submit" id="check-button" class="button button-primary">Periksa</button>
-            <button type="button" id="cancel-button" class="button button-secondary" hidden>Batal</button>
+            <button type="submit" id="check-button" class="button button-primary">Check</button>
+            <button type="button" id="cancel-button" class="button button-secondary" hidden>Cancel</button>
             <button type="button" id="reset-button" class="button button-secondary">Reset</button>
           </div>
           <p id="validation-message" class="message"></p>
@@ -131,7 +131,7 @@
 
         <div class="topbar-status">
           <span class="api-badge">GitHub API</span>
-          <p id="app-status" class="app-status" role="status" aria-live="polite">Siap. Masukkan URL repositori GitHub publik.</p>
+          <p id="app-status" class="app-status" role="status" aria-live="polite">Ready. Enter a public GitHub repository URL.</p>
         </div>
       </header>
 
@@ -140,18 +140,18 @@
           <div>
             <p class="eyebrow">Dashboard</p>
             <h1>Repository Explorer</h1>
-            <p class="page-subtitle">Eksplorasi read-only repositori GitHub publik: metadata, commit timeline, graph ancestry, dan perbandingan branch.</p>
+            <p class="page-subtitle">Read-only exploration of public GitHub repositories: metadata, commit timeline, ancestry graph, and branch comparison.</p>
           </div>
           <div id="rate-limit" class="rate-limit"></div>
         </section>
 
         <section id="branch-panel" class="panel branch-panel" hidden>
           <div class="panel-header">
-            <h2>Branch</h2>
-            <button type="button" id="load-more-branches" class="button button-secondary" hidden>Muat branch berikutnya</button>
+            <h2>Branches</h2>
+            <button type="button" id="load-more-branches" class="button button-secondary" hidden>Load more branches</button>
           </div>
           <label class="field">
-            <span>Branch aktif</span>
+            <span>Active branch</span>
             <select id="branch-select"></select>
           </label>
           <p id="branch-status" class="message" role="status" aria-live="polite"></p>
@@ -160,7 +160,7 @@
         <section id="commits" class="panel commit-panel">
           <div class="panel-header">
             <h2>Commit timeline</h2>
-            <button type="button" id="load-more-commits" class="button button-secondary" hidden>Muat commit berikutnya</button>
+            <button type="button" id="load-more-commits" class="button button-secondary" hidden>Load more commits</button>
           </div>
           <p id="commit-status" class="message" role="status" aria-live="polite"></p>
           <ul id="commit-list" class="commit-list"></ul>
@@ -171,7 +171,7 @@
             <h2>Commit graph</h2>
             <span id="graph-summary" class="graph-summary"></span>
           </div>
-          <div id="commit-graph" class="graph-container" role="region" aria-label="Grafik ancestry commit"></div>
+          <div id="commit-graph" class="graph-container" role="region" aria-label="Commit ancestry graph"></div>
           <p id="graph-status" class="message" role="status" aria-live="polite"></p>
         </section>
 
@@ -179,9 +179,9 @@
           <div class="panel-header">
             <div>
               <h2>Branch Comparison</h2>
-              <p class="panel-subtitle">Bandingkan dua referensi dan tinjau commit serta file yang berubah.</p>
+              <p class="panel-subtitle">Compare two references and review changed commits and files.</p>
             </div>
-            <button type="button" id="compare-button" class="button button-primary">Bandingkan</button>
+            <button type="button" id="compare-button" class="button button-primary">Compare</button>
           </div>
 
           <div class="comparison-controls">
@@ -202,12 +202,12 @@
             <section class="comparison-subpanel comparison-timeline-panel" aria-labelledby="comparison-commits-title">
               <h3 id="comparison-commits-title">Commit timeline</h3>
               <ul id="comparison-commit-list" class="commit-list"></ul>
-              <button type="button" id="load-more-comparison" class="button button-secondary" hidden>Muat commit berikutnya</button>
+              <button type="button" id="load-more-comparison" class="button button-secondary" hidden>Load more commits</button>
             </section>
 
             <section class="comparison-subpanel comparison-detail-panel" aria-labelledby="comparison-detail-title">
               <h3 id="comparison-detail-title">File changes &amp; diff</h3>
-              <div class="tabs" role="tablist" aria-label="Tampilan perbandingan">
+              <div class="tabs" role="tablist" aria-label="Comparison view">
                 <button type="button" id="comparison-files-tab" class="tab is-active" role="tab" aria-selected="true" aria-controls="comparison-files-panel">File Changes</button>
                 <button type="button" id="comparison-diff-tab" class="tab" role="tab" aria-selected="false" aria-controls="comparison-diff-panel">Diff Viewer</button>
               </div>
@@ -222,7 +222,7 @@
         </section>
 
         <section id="details" class="panel detail-panel">
-          <h2>Detail commit</h2>
+          <h2>Commit details</h2>
           <div id="commit-detail" class="commit-detail"></div>
         </section>
       </main>

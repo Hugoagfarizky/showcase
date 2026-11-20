@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="app-shell">
-    <aside class="sidebar" aria-label="Navigasi utama">
+    <aside class="sidebar" aria-label="Main navigation">
       <div class="brand">
         <span class="brand-mark" aria-hidden="true">DP</span>
         <div>
@@ -24,15 +24,15 @@
         <button type="button" id="tab-collections" class="tab-button" data-view="collections" aria-selected="false">Collections</button>
       </nav>
 
-      <p class="sidebar-note">Local only. Tidak ada backend, telemetri, atau penyimpanan cloud.</p>
+      <p class="sidebar-note">Local only. No backend, telemetry, or cloud storage.</p>
     </aside>
 
     <main class="workspace">
       <header class="topbar">
         <div>
           <h1 id="view-title">Request Console</h1>
-          <p id="view-description" class="view-description">Kirim, inspeksi, dan debug request API secara lokal.</p>
-          <p id="app-status" class="app-status" role="status" aria-live="polite">Siap. Tekan Send untuk mengirim request.</p>
+          <p id="view-description" class="view-description">Send, inspect, and debug API requests locally.</p>
+          <p id="app-status" class="app-status" role="status" aria-live="polite">Ready. Press Send to send the request.</p>
         </div>
       </header>
 
@@ -69,7 +69,7 @@
                 </div>
               </div>
 
-              <div class="section-tabs" role="tablist" aria-label="Bagian request">
+              <div class="section-tabs" role="tablist" aria-label="Request sections">
                 <button type="button" class="section-tab is-active" data-section="params" aria-selected="true">Params</button>
                 <button type="button" class="section-tab" data-section="headers" aria-selected="false">Headers</button>
                 <button type="button" class="section-tab" data-section="body" aria-selected="false">Body</button>
@@ -78,7 +78,7 @@
               <div class="section-panel" data-section-panel="params">
                 <div class="section-toolbar">
                   <h3>Query parameters</h3>
-                  <button type="button" id="add-query" class="button button-ghost">Tambah</button>
+                  <button type="button" id="add-query" class="button button-ghost">Add</button>
                 </div>
                 <div class="table-wrap">
                   <table id="query-table"><tbody id="query-body"></tbody></table>
@@ -88,7 +88,7 @@
               <div class="section-panel" data-section-panel="headers" hidden>
                 <div class="section-toolbar">
                   <h3>Headers</h3>
-                  <button type="button" id="add-header" class="button button-ghost">Tambah</button>
+                  <button type="button" id="add-header" class="button button-ghost">Add</button>
                 </div>
                 <div class="table-wrap">
                   <table id="header-table"><tbody id="header-body"></tbody></table>
@@ -119,7 +119,7 @@
       <section id="view-history" class="view" hidden>
         <div class="view-header">
           <h2>History</h2>
-          <button type="button" id="clear-history" class="button button-secondary">Hapus semua history</button>
+          <button type="button" id="clear-history" class="button button-secondary">Clear all history</button>
         </div>
         <div id="history-container" class="list-container"></div>
       </section>
@@ -129,8 +129,8 @@
           <h2>Collections</h2>
         </div>
         <div class="collection-actions">
-          <input id="collection-name" type="text" placeholder="Nama collection">
-          <button type="button" id="save-collection" class="button button-secondary">Simpan collection</button>
+          <input id="collection-name" type="text" placeholder="Collection name">
+          <button type="button" id="save-collection" class="button button-secondary">Save collection</button>
           <button type="button" id="export-collections" class="button button-secondary">Export JSON</button>
           <input id="import-collections" type="file" accept="application/json">
         </div>
